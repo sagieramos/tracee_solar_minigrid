@@ -19,7 +19,7 @@
     <!-- Sidebar -->
     <aside class="fixed top-0 left-0 h-screen w-64 bg-slate-900 text-white z-50 overflow-y-auto hidden md:block">
         <div class="p-6 border-b border-slate-800">
-            <h1 class="text-xl font-bold text-yellow-500"><i class="fas fa-bolt mr-2"></i>SolarMini</h1>
+            <h1 class="text-xl font-bold text-yellow-500"><i class="fas fa-bolt mr-2"></i>TraceeSolar</h1>
             <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest font-semibold">Project Portal</p>
         </div>
         <nav class="mt-4">
@@ -77,7 +77,7 @@
             </div>
 
             <!-- Stats Bar (Editable) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-8">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card group">
                     <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider flex justify-between">PV Capacity <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
                     <h3 contenteditable="true" class="text-2xl font-bold mt-1 text-yellow-600 outline-none focus:bg-yellow-50 px-1 rounded">150 kWp</h3>
@@ -89,14 +89,19 @@
                     <p class="text-xs text-slate-400 mt-2">LiFePO4 Industrial Grade</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card group">
-                    <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider flex justify-between">Gas/Diesel Disp. <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
+                    <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider flex justify-between">Fuel Disp. <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
                     <h3 contenteditable="true" class="text-2xl font-bold mt-1 text-blue-600 outline-none focus:bg-blue-50 px-1 rounded">92%</h3>
-                    <p class="text-xs text-slate-400 mt-2">Target Average Uptime</p>
+                    <p class="text-xs text-slate-400 mt-2">Target Uptime</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card group">
                     <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider flex justify-between">ROI Period <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
                     <h3 contenteditable="true" class="text-2xl font-bold mt-1 text-purple-600 outline-none focus:bg-purple-50 px-1 rounded">5.2 Years</h3>
                     <p class="text-xs text-slate-400 mt-2">Estimated Payback</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card group">
+                    <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider flex justify-between">CO2 Offset <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
+                    <h3 contenteditable="true" class="text-2xl font-bold mt-1 text-teal-600 outline-none focus:bg-teal-50 px-1 rounded">185 Tons</h3>
+                    <p class="text-xs text-slate-400 mt-2">Annual PR Impact</p>
                 </div>
             </div>
         </header>
@@ -107,44 +112,51 @@
                 <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">01</span>
                 Roadmap to Power On
             </h2>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-                <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-8 md:gap-4">
-                    <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 hidden md:block -translate-y-1/2 z-0"></div>
-                    
-                    <!-- Step 1 -->
-                    <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
-                        <div class="w-10 h-10 rounded-full bg-yellow-500 text-slate-900 flex items-center justify-center font-bold mb-3 shadow-lg">1</div>
-                        <p class="text-xs font-bold text-slate-900">Load Audit</p>
-                        <p class="text-[10px] text-slate-500 mt-1 italic">48 Hours (Now)</p>
-                    </div>
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-8">
+                <div class="lg:col-span-3 bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-8 md:gap-4">
+                        <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 hidden md:block -translate-y-1/2 z-0"></div>
+                        
+                        <!-- Step 1 -->
+                        <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
+                            <div class="w-10 h-10 rounded-full bg-yellow-500 text-slate-900 flex items-center justify-center font-bold mb-3 shadow-lg">1</div>
+                            <p class="text-xs font-bold text-slate-900">Load Audit</p>
+                            <p class="text-[10px] text-slate-500 mt-1 italic">48 Hours (Now)</p>
+                        </div>
 
-                    <!-- Step 2 -->
-                    <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
-                        <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold mb-3 border border-slate-200">2</div>
-                        <p class="text-xs font-bold text-slate-400">Final Sizing</p>
-                        <p class="text-[10px] text-slate-400 mt-1 italic">1 Week</p>
-                    </div>
+                        <!-- Step 2 -->
+                        <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
+                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold mb-3 border border-slate-200">2</div>
+                            <p class="text-xs font-bold text-slate-400">Final Sizing</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic">1 Week</p>
+                        </div>
 
-                    <!-- Step 3 -->
-                    <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
-                        <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold mb-3 border border-slate-200">3</div>
-                        <p class="text-xs font-bold text-slate-400">Procurement</p>
-                        <p class="text-[10px] text-slate-400 mt-1 italic">4-6 Weeks</p>
-                    </div>
+                        <!-- Step 3 -->
+                        <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
+                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold mb-3 border border-slate-200">3</div>
+                            <p class="text-xs font-bold text-slate-400">Procurement</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic">4-6 Weeks</p>
+                        </div>
 
-                    <!-- Step 4 -->
-                    <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
-                        <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold mb-3 border border-slate-200">4</div>
-                        <p class="text-xs font-bold text-slate-400">Civil Works</p>
-                        <p class="text-[10px] text-slate-400 mt-1 italic">2 Weeks</p>
-                    </div>
+                        <!-- Step 4 -->
+                        <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
+                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold mb-3 border border-slate-200">4</div>
+                            <p class="text-xs font-bold text-slate-400">Civil Works</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic">2 Weeks</p>
+                        </div>
 
-                    <!-- Step 5 -->
-                    <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
-                        <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold mb-3 shadow-lg"><i class="fas fa-check"></i></div>
-                        <p class="text-xs font-bold text-emerald-600">Power On</p>
-                        <p class="text-[10px] text-emerald-500 mt-1 italic">Commissioning</p>
+                        <!-- Step 5 -->
+                        <div class="relative z-10 flex flex-col items-center text-center max-w-[120px]">
+                            <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold mb-3 shadow-lg"><i class="fas fa-check"></i></div>
+                            <p class="text-xs font-bold text-emerald-600">Power On</p>
+                            <p class="text-[10px] text-emerald-500 mt-1 italic">Commissioning</p>
+                        </div>
                     </div>
+                </div>
+                <div class="bg-blue-900 p-6 rounded-2xl text-white shadow-xl flex flex-col justify-center">
+                    <h4 class="font-bold text-blue-300 uppercase tracking-widest text-[10px] mb-2">Estimated Footprint</h4>
+                    <p class="text-2xl font-bold mb-1">~1,800 m²</p>
+                    <p class="text-xs text-blue-200 italic leading-tight">Requires approximately 3-4 standard plots of secured land.</p>
                 </div>
             </div>
         </section>
@@ -152,12 +164,12 @@
         <!-- Grid Comparison -->
         <section id="grid-comparison" class="mb-12 pt-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-                    <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-sm">
+                    <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center text-base">
                         <i class="fas fa-balance-scale text-yellow-500 mr-3"></i>
                         Mini-Grid vs. National Grid (DisCo)
                     </h2>
-                    <div class="space-y-4 text-sm">
+                    <div class="space-y-4">
                         <div class="flex items-center justify-between p-3 bg-red-50 rounded-xl border border-red-100">
                             <span class="font-bold text-red-900">National Grid Uptime</span>
                             <span class="text-red-700 font-mono italic">30% - 60% Avg.</span>
@@ -181,7 +193,7 @@
         <!-- Discovery -->
         <section id="discovery" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">01</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">02</span>
                 Client Discovery & Data Capture
             </h2>
             <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
@@ -210,10 +222,10 @@
         <!-- Project Team -->
         <section id="team" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">02</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">03</span>
                 Project Team & Roles
             </h2>
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden text-sm">
                 <table class="w-full text-left">
                     <thead class="bg-slate-50 border-b border-slate-200">
                         <tr>
@@ -222,7 +234,7 @@
                             <th class="px-6 py-4 font-bold text-slate-700">Responsibility</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 text-sm">
+                    <tbody class="divide-y divide-slate-100">
                         <tr>
                             <td class="px-6 py-4 font-bold">Stanley</td>
                             <td class="px-6 py-4 text-yellow-600 font-semibold">Lead Technical Consultant</td>
@@ -261,17 +273,17 @@
         <!-- Architecture -->
         <section id="architecture" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">03</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">04</span>
                 System Architecture
             </h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex justify-center items-center overflow-x-auto">
                     <img src="minigrid_diagram.svg" alt="Architecture Diagram" class="max-w-full h-auto">
                 </div>
-                <div class="space-y-6">
+                <div class="space-y-6 text-sm">
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card">
                         <h4 class="font-bold text-slate-800 mb-2">Energy Flow Strategy</h4>
-                        <ul class="text-sm text-slate-600 space-y-3">
+                        <ul class="text-slate-600 space-y-3">
                             <li class="flex items-start">
                                 <i class="fas fa-sun text-yellow-500 mt-1 mr-3"></i>
                                 <span><strong>Daytime:</strong> Direct PV supply to load + battery charging.</span>
@@ -288,7 +300,7 @@
                     </div>
                     <div class="bg-slate-900 p-6 rounded-2xl text-white shadow-xl">
                         <p class="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-2">Technical Philosophy</p>
-                        <p class="text-xl font-bold italic font-serif">"We build decentralized utilities, not just solar projects."</p>
+                        <p class="text-xl font-bold italic font-serif leading-tight">"We build decentralized utilities, not just solar projects."</p>
                     </div>
                 </div>
             </div>
@@ -297,24 +309,35 @@
         <!-- Distribution -->
         <section id="distribution" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">04</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">05</span>
                 Distribution Layout
             </h2>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex justify-center items-center overflow-x-auto mb-8">
-                <img src="distribution_layout.svg" alt="Distribution Diagram" class="max-w-full h-auto">
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
-                    <h5 class="font-bold text-blue-900 text-sm">HV Transmission</h5>
-                    <p class="text-xs text-blue-700 mt-1 italic">Efficient power transfer for distances > 1km using 11kV lines.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex justify-center items-center overflow-x-auto">
+                    <img src="distribution_layout.svg" alt="Distribution Diagram" class="max-w-full h-auto">
                 </div>
-                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-                    <h5 class="font-bold text-emerald-900 text-sm">Smart Metering</h5>
-                    <p class="text-xs text-emerald-700 mt-1 italic">STS-compliant prepaid meters ensuring 92%+ collection efficiency.</p>
-                </div>
-                <div class="bg-purple-50 p-4 rounded-xl border border-purple-100">
-                    <h5 class="font-bold text-purple-900 text-sm">Load Centers</h5>
-                    <p class="text-xs text-purple-700 mt-1 italic">Strategically placed step-down transformers at consumer clusters.</p>
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 text-sm">
+                        <h4 class="font-bold text-slate-800 mb-4">Engineering Priority</h4>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                                <h5 class="font-bold text-blue-900 text-xs uppercase">HV Transmission</h5>
+                                <p class="text-[11px] text-blue-700 mt-1 italic">Efficient transfer for distances > 1km using 11kV lines.</p>
+                            </div>
+                            <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                                <h5 class="font-bold text-emerald-900 text-xs uppercase">Smart Metering</h5>
+                                <p class="text-[11px] text-emerald-700 mt-1 italic">STS prepaid meters ensuring 92%+ collection efficiency.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-xl border border-purple-100">
+                                <h5 class="font-bold text-purple-900 text-xs uppercase">Load Centers</h5>
+                                <p class="text-[11px] text-purple-700 mt-1 italic">Strategically placed transformers at consumer clusters.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 p-6 rounded-2xl text-white shadow-xl">
+                        <p class="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-2">Revenue Assurance</p>
+                        <p class="text-lg font-bold italic font-serif leading-tight">"Distribution is the backbone of ROI. We engineer for zero 'hidden' losses."</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -322,33 +345,33 @@
         <!-- Productive Use -->
         <section id="productive-use" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">05</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">06</span>
                 Productive Use & Anchor Loads
             </h2>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-sm">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div>
-                        <h4 class="font-bold text-slate-800 mb-4">Daytime Revenue Strategy</h4>
-                        <p class="text-sm text-slate-600 mb-6 italic">Identifying mills, cold storage, or water pumping to consume daytime surplus and stabilize project bankability.</p>
+                        <h4 class="font-bold text-slate-800 mb-4 text-base">Daytime Revenue Strategy</h4>
+                        <p class="text-slate-600 mb-6 italic">Identifying mills, cold storage, or water pumping to consume daytime surplus and stabilize project bankability.</p>
                         <div class="space-y-4">
                             <div class="flex items-center p-3 bg-slate-50 rounded-xl">
                                 <i class="fas fa-snowflake text-blue-500 mr-4 text-xl"></i>
                                 <div>
-                                    <p class="text-sm font-bold">Cold Storage</p>
+                                    <p class="font-bold">Cold Storage</p>
                                     <p class="text-xs text-slate-500">Agro-processing and food preservation.</p>
                                 </div>
                             </div>
                             <div class="flex items-center p-3 bg-slate-50 rounded-xl">
                                 <i class="fas fa-faucet text-emerald-500 mr-4 text-xl"></i>
                                 <div>
-                                    <p class="text-sm font-bold">Water Pumping</p>
+                                    <p class="font-bold">Water Pumping</p>
                                     <p class="text-xs text-slate-500">Solar-powered irrigation and community supply.</p>
                                 </div>
                             </div>
                             <div class="flex items-center p-3 bg-slate-50 rounded-xl">
                                 <i class="fas fa-charging-station text-yellow-500 mr-4 text-xl"></i>
                                 <div>
-                                    <p class="text-sm font-bold">E-Mobility Hubs</p>
+                                    <p class="font-bold">E-Mobility Hubs</p>
                                     <p class="text-xs text-slate-500">Electric bike and tricycle charging.</p>
                                 </div>
                             </div>
@@ -357,7 +380,7 @@
                     <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-2xl relative overflow-hidden">
                         <i class="fas fa-quote-right absolute top-4 right-4 text-slate-800 text-6xl opacity-20"></i>
                         <h5 class="text-xl font-bold mb-4 text-yellow-500 tracking-tight">The "Anchor Load" Principle</h5>
-                        <p class="text-sm italic text-slate-300 leading-relaxed mb-6">"By securing industrial/commercial daytime customers, we reduce the tariff for residential households while ensuring the project pays for itself in record time."</p>
+                        <p class="italic text-slate-300 leading-relaxed mb-6">"By securing industrial/commercial daytime customers, we reduce the tariff for residential households while ensuring the project pays for itself in record time."</p>
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center mr-3 font-bold text-slate-900">T</div>
                             <div>
@@ -371,9 +394,9 @@
         </section>
 
         <!-- Financial Model -->
-        <section id="financials" class="mb-12 pt-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">06</span>
+        <section id="financials" class="mb-12 pt-8 text-sm">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center text-base">
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">07</span>
                 Financial Model & Business Case
             </h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -384,7 +407,7 @@
                             <img src="capex_composition.svg" alt="CAPEX Chart" class="max-w-full h-auto">
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 overflow-hidden text-sm">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
                         <h4 class="font-bold text-slate-800 mb-4">Economic Superiority</h4>
                         <table class="w-full text-xs">
                             <thead class="bg-slate-50 border-b border-slate-200">
@@ -422,8 +445,8 @@
                         </div>
                     </div>
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                        <h4 class="font-bold text-slate-800 mb-4">Revenue Waterfall</h4>
-                        <ol class="text-sm space-y-4">
+                        <h4 class="font-bold text-slate-800 mb-4 text-base">Revenue Waterfall</h4>
+                        <ol class="space-y-4">
                             <li class="flex items-center p-3 bg-slate-50 rounded-xl">
                                 <span class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold mr-3">1</span>
                                 <span class="flex-grow">Operations & Maintenance (O&M)</span>
@@ -452,37 +475,48 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div>
                     <h2 class="text-3xl font-bold mb-4">Interactive Savings Calculator</h2>
-                    <p class="text-slate-400 mb-8 italic">Adjust parameters live during the meeting to show immediate ROI.</p>
+                    <p class="text-slate-400 mb-8 italic text-sm">Adjust parameters live during the meeting to show immediate ROI for different fuel baselines.</p>
                     
-                    <div class="space-y-6">
+                    <div class="space-y-8">
+                        <!-- Fuel Type Selector -->
                         <div>
-                            <label class="block text-sm font-bold text-slate-300 mb-2">Daily Diesel Consumption (Litres)</label>
-                            <input type="range" id="dieselLitres" min="0" max="500" value="150" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-yellow-500">
+                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Select Current Fuel Baseline:</p>
+                            <div class="flex p-1 bg-slate-800 rounded-xl w-fit border border-slate-700 shadow-inner">
+                                <button onclick="setFuel('diesel')" id="btn-diesel" class="px-6 py-2.5 rounded-lg text-xs font-black transition-all bg-yellow-500 text-slate-900 shadow-lg scale-105">DIESEL</button>
+                                <button onclick="setFuel('petrol')" id="btn-petrol" class="px-6 py-2.5 rounded-lg text-xs font-black transition-all hover:bg-slate-700 text-slate-400">PETROL</button>
+                                <button onclick="setFuel('gas')" id="btn-gas" class="px-6 py-2.5 rounded-lg text-xs font-black transition-all hover:bg-slate-700 text-slate-400">GAS (CNG/LPG)</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label id="quantityLabel" class="block text-sm font-bold text-slate-300 mb-2 uppercase tracking-wide">Daily Fuel Consumption (Litres)</label>
+                            <input type="range" id="fuelQuantity" min="0" max="500" value="150" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-yellow-500">
                             <div class="flex justify-between text-xs mt-2 text-slate-500">
-                                <span>0L</span>
-                                <span id="litresVal" class="text-yellow-500 font-bold text-base">150 L</span>
-                                <span>500L</span>
+                                <span>0</span>
+                                <span id="quantityVal" class="text-yellow-500 font-bold text-base">150 L</span>
+                                <span>500</span>
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-slate-300 mb-2">Current Diesel Price (₦ / Litre)</label>
-                            <input type="range" id="dieselPrice" min="800" max="1500" value="1200" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-yellow-500">
+                            <label id="priceLabel" class="block text-sm font-bold text-slate-300 mb-2 uppercase tracking-wide">Price per Unit (₦)</label>
+                            <input type="range" id="fuelPrice" min="500" max="1500" value="1200" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-yellow-500">
                             <div class="flex justify-between text-xs mt-2 text-slate-500">
-                                <span>₦800</span>
+                                <span id="minPrice">₦500</span>
                                 <span id="priceVal" class="text-yellow-500 font-bold text-base">₦1,200</span>
-                                <span>₦1,500</span>
+                                <span id="maxPrice">₦1,500</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 flex flex-col justify-center">
-                    <p class="text-slate-400 text-sm uppercase tracking-widest font-bold mb-2">Monthly Diesel Spend</p>
+                    <p class="text-slate-400 text-sm uppercase tracking-widest font-bold mb-2">Monthly Operational Spend</p>
                     <h3 id="currentSpend" class="text-4xl font-mono font-bold text-red-500 mb-6 tracking-tighter">₦5,400,000</h3>
                     
                     <div class="pt-6 border-t border-slate-700">
                         <p class="text-emerald-400 text-sm uppercase tracking-widest font-bold mb-2">Solar Monthly Saving (85% Displacement)</p>
                         <h3 id="savings" class="text-5xl font-mono font-bold text-emerald-500 tracking-tighter">₦4,590,000</h3>
-                        <p class="text-slate-500 text-xs mt-4">Annual Savings: <span id="annualSavings" class="text-slate-300 font-bold">₦55,080,000</span></p>
+                        <p class="text-slate-500 text-xs mt-4 uppercase tracking-widest">Annual Projected Savings</p>
+                        <h4 id="annualSavings" class="text-2xl font-mono text-slate-300 font-bold tracking-tight">₦55,080,000</h4>
                     </div>
                 </div>
             </div>
@@ -491,13 +525,13 @@
         <!-- Regulatory -->
         <section id="regulatory" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">07</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">08</span>
                 Regulatory Framework
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 text-sm">
                     <h4 class="font-bold text-slate-800 mb-4 italic underline decoration-yellow-500 underline-offset-4">NERC Compliance Pathway</h4>
-                    <div class="space-y-4 text-sm text-slate-600">
+                    <div class="space-y-4 text-slate-600">
                         <div class="flex items-start">
                             <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center mr-3 flex-shrink-0 text-slate-900 font-bold">1</div>
                             <p><strong>Isolated Permit:</strong> Adherence to the **NERC Mini-Grid Regulation 2016** for systems <1MW.</p>
@@ -511,13 +545,20 @@
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
                     <h4 class="font-bold text-slate-800 mb-4 italic underline decoration-red-500 underline-offset-4">Risk & Mitigation</h4>
                     <div class="space-y-3">
-                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center">
-                            <p class="text-xs font-bold uppercase">FX Volatility</p>
-                            <p class="text-[10px] text-slate-500">USD-indexed equipment contracts</p>
+                        <div class="p-3 bg-orange-50 rounded-xl border border-orange-100 flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-bold text-orange-900 uppercase">Harmattan Dust</p>
+                                <p class="text-[10px] text-orange-700 italic">Automated cleaning + Oversized PV Array (30% Margin)</p>
+                            </div>
+                            <i class="fas fa-wind text-orange-500"></i>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center">
-                            <p class="text-xs font-bold uppercase">Theft/Vandalism</p>
-                            <p class="text-[10px] text-slate-500">Community Stakeholder Security</p>
+                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center text-xs font-bold text-slate-700">
+                            <p class="uppercase">FX Volatility</p>
+                            <p class="text-[10px] text-slate-500 font-medium italic">USD-indexed equipment contracts</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center text-xs font-bold text-slate-700">
+                            <p class="uppercase">Theft/Vandalism</p>
+                            <p class="text-[10px] text-slate-500 font-medium italic">Community Stakeholder Security</p>
                         </div>
                     </div>
                 </div>
@@ -526,8 +567,8 @@
 
         <!-- Community -->
         <section id="community" class="mb-12 pt-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">08</span>
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center text-base">
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">09</span>
                 Community Engagement
             </h2>
             <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
@@ -555,7 +596,7 @@
         <footer class="mt-20 py-20 bg-slate-900 rounded-[3rem] text-center text-white relative overflow-hidden">
             <div class="absolute inset-0 bg-yellow-500 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
             <h2 class="text-4xl font-bold mb-4">Why Choose Us?</h2>
-            <p class="text-slate-400 mb-12 max-w-xl mx-auto italic">"We don't just sell equipment. We build bankable, utility-grade infrastructure structured for long-term institutional capital."</p>
+            <p class="text-slate-400 mb-12 max-w-xl mx-auto italic text-sm">"We don't just sell equipment. We build bankable, utility-grade infrastructure structured for long-term institutional capital."</p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16 px-4">
                 <div class="text-left">
@@ -607,10 +648,10 @@
                     </li>
                 </ul>
                 <div class="flex flex-col gap-3">
-                    <a href="briefing.html" target="_blank" class="w-full py-4 bg-slate-900 text-white text-center font-bold rounded-xl hover:bg-slate-800 transition-colors">
+                    <a href="briefing.html" target="_blank" class="w-full py-4 bg-slate-900 text-white text-center font-bold rounded-xl hover:bg-slate-800 transition-colors text-sm">
                         View Technical Briefing
                     </a>
-                    <button onclick="closeModal()" class="w-full py-3 bg-slate-100 text-slate-500 text-center font-bold rounded-xl hover:bg-slate-200 transition-colors">
+                    <button onclick="closeModal()" class="w-full py-3 bg-slate-100 text-slate-500 text-center font-bold rounded-xl hover:bg-slate-200 transition-colors text-sm">
                         Back to Presentation
                     </button>
                 </div>
@@ -635,22 +676,66 @@
         }
 
         // Savings Calculator Logic
-        const litresInput = document.getElementById('dieselLitres');
-        const priceInput = document.getElementById('dieselPrice');
-        const litresVal = document.getElementById('litresVal');
+        let currentFuel = 'diesel';
+        const fuelData = {
+            diesel: { unit: 'L', name: 'Diesel', price: 1200, qty: 150, minP: 800, maxP: 1500 },
+            petrol: { unit: 'L', name: 'Petrol', price: 670, qty: 100, minP: 500, maxP: 1000 },
+            gas: { unit: 'scm', name: 'Gas', price: 450, qty: 200, minP: 200, maxP: 800 }
+        };
+
+        const fuelQtyInput = document.getElementById('fuelQuantity');
+        const fuelPriceInput = document.getElementById('fuelPrice');
+        const quantityVal = document.getElementById('quantityVal');
         const priceVal = document.getElementById('priceVal');
         const currentSpend = document.getElementById('currentSpend');
         const savings = document.getElementById('savings');
         const annualSavings = document.getElementById('annualSavings');
 
-        function updateCalculator() {
-            const litres = parseFloat(litresInput.value);
-            const price = parseFloat(priceInput.value);
+        const quantityLabel = document.getElementById('quantityLabel');
+        const priceLabel = document.getElementById('priceLabel');
+        const minPriceLabel = document.getElementById('minPrice');
+        const maxPriceLabel = document.getElementById('maxPrice');
+
+        function setFuel(type) {
+            currentFuel = type;
+            const data = fuelData[type];
             
-            litresVal.textContent = litres + ' L';
+            // Update active button UI
+            ['diesel', 'petrol', 'gas'].forEach(f => {
+                const btn = document.getElementById('btn-' + f);
+                if (f === type) {
+                    btn.classList.add('bg-yellow-500', 'text-slate-900');
+                    btn.classList.remove('hover:bg-slate-700');
+                } else {
+                    btn.classList.remove('bg-yellow-500', 'text-slate-900');
+                    btn.classList.add('hover:bg-slate-700');
+                }
+            });
+
+            // Update Labels
+            quantityLabel.textContent = `Daily ${data.name} Consumption (${data.unit})`;
+            priceLabel.textContent = `Price per ${data.unit === 'L' ? 'Litre' : data.unit} (₦)`;
+            minPriceLabel.textContent = `₦${data.minP}`;
+            maxPriceLabel.textContent = `₦${data.maxP}`;
+
+            // Update Input Ranges
+            fuelPriceInput.min = data.minP;
+            fuelPriceInput.max = data.maxP;
+            fuelPriceInput.value = data.price;
+            fuelQtyInput.value = data.qty;
+
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            const data = fuelData[currentFuel];
+            const qty = parseFloat(fuelQtyInput.value);
+            const price = parseFloat(fuelPriceInput.value);
+            
+            quantityVal.textContent = qty + ' ' + data.unit;
             priceVal.textContent = '₦' + price.toLocaleString();
             
-            const monthlySpend = litres * price * 30;
+            const monthlySpend = qty * price * 30;
             const monthlySavings = monthlySpend * 0.85; // 85% displacement
             const yearSavings = monthlySavings * 12;
 
@@ -659,8 +744,8 @@
             annualSavings.textContent = '₦' + Math.round(yearSavings).toLocaleString();
         }
 
-        litresInput.addEventListener('input', updateCalculator);
-        priceInput.addEventListener('input', updateCalculator);
+        fuelQtyInput.addEventListener('input', updateCalculator);
+        fuelPriceInput.addEventListener('input', updateCalculator);
 
         // Sidebar Navigation Active State
         const sections = document.querySelectorAll('section, header');
@@ -684,7 +769,7 @@
             });
         });
 
-        // Initialize calculator
+        // Initialize
         updateCalculator();
     </script>
 </body>
