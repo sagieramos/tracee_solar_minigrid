@@ -25,7 +25,7 @@
 | **Battery Storage** | [e.g., 480 kWh LiFePO4] |
 | **Estimated CAPEX** | $[Amount] |
 | **Target Tariff** | ₦[Amount] / kWh |
-| **Diesel Displacement** | 85% - 95% |
+| **Gas or Diesel Displacement** | 85% - 95% |
 | **ROI Period** | 4.5 - 6 Years |
 
 ---

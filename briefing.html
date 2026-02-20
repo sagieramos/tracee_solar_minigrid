@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Briefing: 48-Hour Site Load Audit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @media print {
+            .no-print { display: none; }
+            body { background-color: white; }
+            .print-shadow { shadow: none; border: 1px solid #e2e8f0; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 py-12 px-4 font-serif">
+
+    <!-- Action Bar -->
+    <div class="max-w-4xl mx-auto mb-6 flex justify-between items-center no-print">
+        <a href="index.html" class="text-slate-500 hover:text-slate-800 flex items-center font-sans text-sm font-bold transition-colors">
+            <i class="fas fa-arrow-left mr-2"></i> Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-slate-900 text-white px-6 py-2 rounded-lg font-sans text-sm font-bold shadow-lg hover:bg-slate-800 transition-all flex items-center">
+            <i class="fas fa-print mr-2"></i> Print Briefing for Chairman
+        </button>
+    </div>
+
+    <!-- The Briefing Document -->
+    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-sm p-12 md:p-20 border-t-8 border-yellow-500 print-shadow relative overflow-hidden">
+        
+        <!-- Watermark/Logo -->
+        <div class="absolute top-10 right-10 opacity-10 no-print">
+            <i class="fas fa-bolt text-8xl text-slate-900"></i>
+        </div>
+
+        <!-- Header -->
+        <div class="border-b-2 border-slate-100 pb-10 mb-10">
+            <div class="flex justify-between items-start mb-8 font-sans">
+                <div>
+                    <h1 class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-1">Technical Briefing Note</h1>
+                    <p class="text-slate-500 font-bold tracking-widest text-xs uppercase">Infrastructure Development Group</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">Document Ref</p>
+                    <p class="text-slate-900 font-mono text-sm font-bold">SMG-AUDIT-2026-001</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8 text-sm font-sans">
+                <div>
+                    <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">To:</p>
+                    <p class="text-slate-900 font-black">The Chairman / Project Owner</p>
+                </div>
+                <div>
+                    <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">From:</p>
+                    <p class="text-slate-900 font-black">Lead Technical Team</p>
+                </div>
+                <div>
+                    <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Date:</p>
+                    <p class="text-slate-900 font-black">February 20, 2026</p>
+                </div>
+                <div>
+                    <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Subject:</p>
+                    <p class="text-slate-900 font-black italic underline">48-Hour Site Load Audit Requirements</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="prose prose-slate max-w-none text-slate-800 leading-relaxed">
+            
+            <section class="mb-12">
+                <h2 class="font-sans font-black text-lg uppercase tracking-tight text-slate-900 border-l-4 border-yellow-500 pl-4 mb-4">Objective</h2>
+                <p class="text-lg italic">
+                    To capture high-resolution, real-time power consumption data ensuring the Solar Mini-Grid is precisely engineered for current peak demand and projected 5-year growth.
+                </p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="font-sans font-black text-lg uppercase tracking-tight text-slate-900 border-l-4 border-yellow-500 pl-4 mb-4">1. Strategic Criticality</h2>
+                <ul class="space-y-4 list-none p-0">
+                    <li class="flex items-start">
+                        <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center text-xs font-black mr-4 mt-1 flex-shrink-0">A</span>
+                        <span><strong>CAPEX Optimization:</strong> Eliminates capital waste by preventing "over-sizing." Precision data ensures the client only pays for necessary capacity.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center text-xs font-black mr-4 mt-1 flex-shrink-0">B</span>
+                        <span><strong>Operational Uptime:</strong> Correctly sizes the battery bank to handle nighttime peaks, preventing system blackouts during critical hours.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center text-xs font-black mr-4 mt-1 flex-shrink-0">C</span>
+                        <span><strong>Financial Bankability:</strong> Provides the data required by institutional lenders (DFIs) to validate ROI and fuel displacement figures.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="font-sans font-black text-lg uppercase tracking-tight text-slate-900 border-l-4 border-yellow-500 pl-4 mb-4">2. Audit Methodology</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+                    <div class="bg-slate-50 p-6 rounded border border-slate-100">
+                        <p class="text-xs font-bold text-yellow-600 uppercase mb-2">Phase I: Deployment</p>
+                        <p class="text-xs text-slate-600 leading-tight">Installation of industrial-grade data loggers at the Main Distribution Board. This is a non-invasive process requiring zero downtime.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded border border-slate-100">
+                        <p class="text-xs font-bold text-yellow-600 uppercase mb-2">Phase II: Logging</p>
+                        <p class="text-xs text-slate-600 leading-tight">Continuous monitoring for 48-72 hours, capturing voltage, current, and harmonics at 5-minute intervals.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="font-sans font-black text-lg uppercase tracking-tight text-slate-900 border-l-4 border-yellow-500 pl-4 mb-4">3. Requirements from Client</h2>
+                <table class="w-full text-sm font-sans">
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="py-3 font-bold text-slate-900 w-1/3">Physical Access</td>
+                            <td class="py-3 text-slate-600 italic uppercase text-[10px]">Mandatory access to Power House & Panels.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 font-bold text-slate-900 w-1/3">Operational State</td>
+                            <td class="py-3 text-slate-600 italic uppercase text-[10px]">Normal facility operations (Full Load).</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 font-bold text-slate-900 w-1/3">Technical Liaison</td>
+                            <td class="py-3 text-slate-600 italic uppercase text-[10px]">Designated site electrician for assistance.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-20 pt-10 border-t-2 border-slate-100 flex justify-between items-end font-sans">
+            <div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-4">Authored by</p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-slate-900 rounded flex items-center justify-center text-white font-black mr-4">T.T.</div>
+                    <div>
+                        <p class="text-sm font-black text-slate-900">Lead Technical Team</p>
+                        <p class="text-[10px] text-slate-500 font-bold italic uppercase">Infrastructure Engineering Dept.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <div class="inline-block px-4 py-2 border-2 border-slate-900 text-slate-900 font-black text-xs uppercase tracking-widest">
+                    Status: Approved for Issue
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="max-w-4xl mx-auto mt-12 text-center text-slate-400 text-[10px] uppercase tracking-widest font-sans no-print">
+        &copy; 2026 SolarMini Infrastructure Development Strategy &bull; Confidential
+    </footer>
+
+</body>
+</html>
