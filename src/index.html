@@ -107,6 +107,14 @@
             visibility: visible;
         }
         
+        /* Auto-hiding Mobile Header */
+        header.md\:hidden {
+            transition: transform 0.3s ease-in-out;
+        }
+        header.md\:hidden.header-hidden {
+            transform: translateY(-100%);
+        }
+        
         /* Touch-friendly targets */
         @media (max-width: 768px) {
             .touch-target {
@@ -157,9 +165,6 @@
             <a href="#discovery" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
                 <i class="fas fa-search w-5 mr-3"></i> Discovery
             </a>
-            <a href="#team" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
-                <i class="fas fa-users w-5 mr-3"></i> Project Team
-            </a>
             <a href="#architecture" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
                 <i class="fas fa-microchip w-5 mr-3"></i> Architecture
             </a>
@@ -183,8 +188,8 @@
             </a>
         </nav>
         <div class="absolute bottom-0 w-full p-6 bg-slate-800">
-            <p class="text-xs text-slate-400">Prepared by Stanley</p>
-            <p class="text-[10px] text-slate-500 mt-1 italic">Technical Site Audit Pending</p>
+            <p class="text-sm text-slate-400">Technical Strategy Draft</p>
+            <p class="text-xs text-slate-500 mt-1 italic">Technical Site Audit Pending</p>
         </div>
     </aside>
 
@@ -200,9 +205,6 @@
             </a>
             <a href="#discovery" class="sidebar-link flex items-center px-6 py-3 transition-colors">
                 <i class="fas fa-search w-5 mr-3"></i> Discovery
-            </a>
-            <a href="#team" class="sidebar-link flex items-center px-6 py-3 transition-colors">
-                <i class="fas fa-users w-5 mr-3"></i> Project Team
             </a>
             <a href="#architecture" class="sidebar-link flex items-center px-6 py-3 transition-colors">
                 <i class="fas fa-microchip w-5 mr-3"></i> Architecture
@@ -227,8 +229,8 @@
             </a>
         </nav>
         <div class="absolute bottom-0 w-full p-6 bg-slate-800">
-            <p class="text-xs text-slate-400">Prepared by Stanley</p>
-            <p class="text-[10px] text-slate-500 mt-1 italic">Technical Site Audit Pending</p>
+            <p class="text-sm text-slate-400">Technical Strategy Draft</p>
+            <p class="text-xs text-slate-500 mt-1 italic">Technical Site Audit Pending</p>
         </div>
     </aside>
 
@@ -239,11 +241,11 @@
         <header id="overview" class="mb-12">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Solar Mini-Grid Client Presentation</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Solar Mini-Grid Meeting Prep</h2>
                     <p class="text-slate-500 mt-2 text-sm md:text-base">Nigeria Rural Utility Infrastructure Development Strategy</p>
                 </div>
                 <div class="flex gap-2 flex-wrap">
-                    <span class="px-3 py-1.5 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full border border-yellow-200 uppercase tracking-tighter whitespace-nowrap">Draft Portfolio</span>
+                    <span class="px-3 py-1.5 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full border border-yellow-200 uppercase tracking-tighter whitespace-nowrap">Internal Strategy</span>
                     <span class="px-3 py-1.5 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full border border-emerald-200 uppercase tracking-tighter whitespace-nowrap">Confidential</span>
                 </div>
             </div>
@@ -391,61 +393,10 @@
             </div>
         </section>
 
-        <!-- Project Team -->
-        <section id="team" class="mb-12 pt-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">03</span>
-                Project Team & Roles
-            </h2>
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden text-sm">
-                <table class="w-full text-left">
-                    <thead class="bg-slate-50 border-b border-slate-200">
-                        <tr>
-                            <th class="px-6 py-4 font-bold text-slate-700">Team Member</th>
-                            <th class="px-6 py-4 font-bold text-slate-700">Role</th>
-                            <th class="px-6 py-4 font-bold text-slate-700">Responsibility</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100">
-                        <tr>
-                            <td class="px-6 py-4 font-bold">Stanley</td>
-                            <td class="px-6 py-4 text-yellow-600 font-semibold">Technical Consultant</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Infrastructure architecture, engineering design, and feasibility.</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 font-bold">Tracee</td>
-                            <td class="px-6 py-4 text-emerald-600 font-semibold">Project Lead</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Relationship management and project oversight.</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 font-bold">Tracee's Boss</td>
-                            <td class="px-6 py-4 text-slate-900 font-bold uppercase tracking-tighter">Chairman</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Strategic vision and final investment approval.</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 font-medium text-slate-400">Financial Analyst</td>
-                            <td class="px-6 py-4 text-slate-400 font-semibold">Supporting Team</td>
-                            <td class="px-6 py-4 text-slate-400 italic">ROI modeling, tariff structuring, and finance details.</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 font-medium text-slate-400">Regulatory Counsel</td>
-                            <td class="px-6 py-4 text-slate-400 font-semibold">Supporting Team</td>
-                            <td class="px-6 py-4 text-slate-400 italic">NERC compliance and permitting roadmap.</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 font-medium text-slate-400">Community Liaison</td>
-                            <td class="px-6 py-4 text-slate-400 font-semibold">Supporting Team</td>
-                            <td class="px-6 py-4 text-slate-400 italic">Social license and local stakeholder management.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
         <!-- Architecture -->
         <section id="architecture" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">04</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">03</span>
                 System Architecture
             </h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -481,7 +432,7 @@
         <!-- Distribution -->
         <section id="distribution" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">05</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">04</span>
                 Distribution Layout
             </h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -517,7 +468,7 @@
         <!-- Productive Use -->
         <section id="productive-use" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">06</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">05</span>
                 Productive Use & Anchor Loads
             </h2>
             <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-sm">
@@ -568,7 +519,7 @@
         <!-- Financial Model -->
         <section id="financials" class="mb-12 pt-8 text-sm">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center text-base">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">07</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">06</span>
                 Financial Model & Business Case
             </h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -697,7 +648,7 @@
         <!-- Regulatory -->
         <section id="regulatory" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">08</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">07</span>
                 Regulatory Framework
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -740,7 +691,7 @@
         <!-- Community -->
         <section id="community" class="mb-12 pt-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center text-base">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">09</span>
+                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">08</span>
                 Community Engagement
             </h2>
             <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
@@ -767,27 +718,27 @@
         <!-- Final Closing -->
         <footer class="mt-20 py-12 md:py-20 bg-slate-900 rounded-3xl md:rounded-[3rem] text-center text-white relative overflow-hidden">
             <div class="absolute inset-0 bg-yellow-500 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
-            <h2 class="text-2xl md:text-4xl font-bold mb-4 px-4">Why Choose Us?</h2>
-            <p class="text-slate-400 mb-12 max-w-xl mx-auto italic text-sm px-4">"We don't just sell equipment. We build bankable, utility-grade infrastructure structured for long-term institutional capital."</p>
+            <h2 class="text-2xl md:text-4xl font-bold mb-4 px-4">Strategic Value Proposition</h2>
+            <p class="text-slate-400 mb-12 max-w-xl mx-auto italic text-sm px-4">"We focus on utility-grade infrastructure structured for long-term project bankability, operational resilience, and institutional compliance."</p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto mb-12 md:mb-16 px-4">
                 <div class="text-left">
                     <p class="text-yellow-500 font-bold text-lg mb-1">01. Engineering-First</p>
-                    <p class="text-xs text-slate-400">Utility-grade designs that outlast 10+ year battery cycles.</p>
+                    <p class="text-sm text-slate-400">Utility-grade designs optimized for Nigerian environmental conditions and 10+ year battery cycles.</p>
                 </div>
                 <div class="text-left">
                     <p class="text-yellow-500 font-bold text-lg mb-1">02. Regulatory Mastery</p>
-                    <p class="text-xs text-slate-400">We handle NERC, EIA, and DisCo filings for you.</p>
+                    <p class="text-sm text-slate-400">Full lifecycle management of NERC permitting, isolated permit status, and DisCo interconnection protocols.</p>
                 </div>
                 <div class="text-left">
-                    <p class="text-yellow-500 font-bold text-lg mb-1">03. Real-Time O&M</p>
-                    <p class="text-xs text-slate-400">Cloud-based monitoring and local maintenance response teams.</p>
+                    <p class="text-yellow-500 font-bold text-lg mb-1">03. Performance Assurance</p>
+                    <p class="text-sm text-slate-400">Integrated cloud monitoring and local response protocols to ensure 99.9% target uptime availability.</p>
                 </div>
             </div>
 
-            <h3 class="text-xl font-bold mb-6 md:mb-8">Next Step: Technical Site Audit</h3>
+            <h3 class="text-xl font-bold mb-6 md:mb-8">Technical Data Capture Protocol</h3>
             <button onclick="openModal()" class="w-full md:w-auto px-8 md:px-10 py-4 md:py-5 bg-yellow-500 text-slate-900 font-black rounded-2xl shadow-2xl hover:bg-yellow-400 hover:scale-105 transition-all flex items-center justify-center mx-4 md:mx-auto uppercase tracking-widest text-sm touch-target">
-                <i class="fas fa-calendar-check mr-3"></i> <span class="hidden sm:inline">Schedule 48h Load Logging</span><span class="sm:hidden">Schedule Audit</span>
+                <i class="fas fa-calendar-check mr-3"></i> <span class="hidden sm:inline">Initiate Technical Load Audit</span><span class="sm:hidden">Start Load Logging</span>
             </button>
         </footer>
 
@@ -855,6 +806,26 @@
             modal.classList.remove('flex');
             document.body.style.overflow = 'auto';
         }
+
+        // Auto-hiding Mobile Header Logic
+        let lastScrollY = window.pageYOffset;
+        const mobileHeader = document.querySelector('header.md\\:hidden');
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.pageYOffset;
+            
+            // Toggle header visibility on mobile
+            if (window.innerWidth < 768) {
+                if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                    // Scrolling down
+                    mobileHeader.classList.add('header-hidden');
+                } else {
+                    // Scrolling up
+                    mobileHeader.classList.remove('header-hidden');
+                }
+            }
+            lastScrollY = currentScrollY;
+        });
 
         // Savings Calculator Logic
         let currentFuel = 'diesel';
