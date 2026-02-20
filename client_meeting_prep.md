@@ -2,6 +2,18 @@
 
 ---
 
+## Project Team & Roles
+| Name | Role | Responsibility |
+| :--- | :--- | :--- |
+| **Stanley** | **Indipendent Technical Consultant** | Infrastructure architecture, engineering design, and technical feasibility. |
+| **Tracee** | **Project Lead** | Relationship management, project timeline oversight, and primary client liaison. |
+| **Tracee's Boss** | **Chairman / Project Owner** | Strategic vision, institutional backing, and final investment approval. |
+| **Supporting Team** | **Financial Analyst** | ROI modeling, tariff structuring, and project finance details. |
+| **Supporting Team** | **Regulatory Counsel** | NERC compliance, permitting roadmap, and legal risk mitigation. |
+| **Supporting Team** | **Community Liaison** | Social license to operate, local stakeholder management, and land engagement. |
+
+---
+
 ## 0. Executive Project Snapshot
 **Goal:** Provide immediate financial and technical scale to decision-makers.
 
@@ -19,7 +31,14 @@
 ---
 
 ## 1. Meeting Objectives & Strategy
-**Goal:** Establish technical credibility as a **Rural Utility Infrastructure Developer**.
+**Goal:** Establish technical credibility as a **Utility Infrastructure Developer**.
+
+### Meeting Agenda (Proposed)
+1.  **Introductions:** Project team roles and stakeholder introductions (5 mins).
+2.  **Context & Pain Points:** Validation of current energy costs and reliability (10 mins).
+3.  **Solution Overview:** System architecture and load management (15 mins).
+4.  **Financials & ROI:** Capex, tariffs, and payback periods (15 mins).
+5.  **Regulatory & Next Steps:** NERC compliance and Technical Audit scheduling (15 mins).
 
 ### Discussion Topics
 *   Validation of current energy pain points (diesel and gas costs, uptime).
