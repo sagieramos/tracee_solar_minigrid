@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Mini-Grid Presentation Dashboard</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Production CSS -->
+    <link rel="stylesheet" href="output.css">
+    
+    <!-- Critical CSS (inlined for fast FCP) -->
+    <style>
+        body{margin:0;background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 50%,#f8fafc 100%);color:#0f172a;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+        .md\:hidden{display:none}
+        .fixed{position:fixed}
+        .top-0{top:0}
+        .left-0{left:0}
+        .right-0{right:0}
+        .z-50{z-index:50}
+        .bg-slate-900{background-color:#0f172a}
+        .text-white{color:#fff}
+        .text-yellow-500{color:#f59e0b}
+        .flex{display:flex}
+        .items-center{align-items:center}
+        .justify-between{justify-content:space-between}
+        .gap-3{gap:.75rem}
+        .px-4{padding-left:1rem;padding-right:1rem}
+        .py-3{padding-top:.75rem;padding-bottom:.75rem}
+        .shadow-lg{box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-slate-100 to-slate-50 text-slate-900 antialiased">
+
+    <!-- Mobile Header -->
+    <header class="md:hidden fixed top-0 left-0 right-0 bg-slate-900 text-white z-50 shadow-lg">
+        <div class="flex items-center justify-between px-4 py-3">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileNav()" class="touch-target p-2 -ml-2 text-white hover:text-yellow-500 transition-colors" aria-label="Toggle menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-lg font-bold text-yellow-500"><i class="fas fa-bolt mr-2"></i>TraceeSolar</h1>
+            </div>
+            <span class="text-xs text-slate-400 uppercase tracking-wider">Dashboard</span>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-overlay fixed inset-0 bg-black/50 z-40 md:hidden" onclick="toggleMobileNav()"></div>
+
+    <!-- Mobile Sidebar -->
+    <aside class="mobile-nav fixed top-0 left-0 h-screen w-72 bg-slate-900 text-white z-50 overflow-y-auto md:hidden">
+        <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+            <div>
+                <h1 class="text-xl font-bold text-yellow-500"><i class="fas fa-bolt mr-2"></i>TraceeSolar</h1>
+                <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest font-semibold">Project Portal</p>
+            </div>
+            <button onclick="toggleMobileNav()" class="touch-target p-2 -mr-2 text-slate-400 hover:text-white transition-colors" aria-label="Close menu">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <nav class="mt-4 pb-20">
+            <a href="#overview" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors active-link touch-target">
+                <i class="fas fa-chart-line w-5 mr-3"></i> Overview
+            </a>
+            <a href="#discovery" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
+                <i class="fas fa-search w-5 mr-3"></i> Discovery
+            </a>
+            <a href="#team" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
+                <i class="fas fa-users w-5 mr-3"></i> Project Team
+            </a>
+            <a href="#architecture" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
+                <i class="fas fa-microchip w-5 mr-3"></i> Architecture
+            </a>
+            <a href="#distribution" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
+                <i class="fas fa-network-wired w-5 mr-3"></i> Distribution
+            </a>
+            <a href="#productive-use" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
+                <i class="fas fa-industry w-5 mr-3"></i> Productive Use
+            </a>
+            <a href="#financials" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
+                <i class="fas fa-money-bill-trend-up w-5 mr-3"></i> Financial Model
+            </a>
+            <a href="#regulatory" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
+                <i class="fas fa-file-contract w-5 mr-3"></i> Regulatory
+            </a>
+            <a href="#community" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
+                <i class="fas fa-handshake w-5 mr-3"></i> Community
+            </a>
+            <a href="#calculator" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors mt-4 text-yellow-500 font-bold touch-target">
+                <i class="fas fa-calculator w-5 mr-3"></i> Savings Calculator
+            </a>
+        </nav>
+        <div class="absolute bottom-0 w-full p-6 bg-slate-800">
+            <p class="text-xs text-slate-400">Prepared by Stanley</p>
+            <p class="text-[10px] text-slate-500 mt-1 italic">Technical Site Audit Pending</p>
+        </div>
+    </aside>
+
+    <!-- Desktop Sidebar -->
+    <aside class="fixed top-0 left-0 h-screen w-64 bg-slate-900 text-white z-50 overflow-y-auto hidden md:block">
+        <div class="p-6 border-b border-slate-800">
+            <h1 class="text-xl font-bold text-yellow-500"><i class="fas fa-bolt mr-2"></i>TraceeSolar</h1>
+            <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest font-semibold">Project Portal</p>
+        </div>
+        <nav class="mt-4">
+            <a href="#overview" class="sidebar-link flex items-center px-6 py-3 transition-colors active-link">
+                <i class="fas fa-chart-line w-5 mr-3"></i> Overview
+            </a>
+            <a href="#discovery" class="sidebar-link flex items-center px-6 py-3 transition-colors">
+                <i class="fas fa-search w-5 mr-3"></i> Discovery
+            </a>
+            <a href="#team" class="sidebar-link flex items-center px-6 py-3 transition-colors">
+                <i class="fas fa-users w-5 mr-3"></i> Project Team
+            </a>
+            <a href="#architecture" class="sidebar-link flex items-center px-6 py-3 transition-colors">
+                <i class="fas fa-microchip w-5 mr-3"></i> Architecture
+            </a>
+            <a href="#distribution" class="sidebar-link flex items-center px-6 py-3 transition-colors">
+                <i class="fas fa-network-wired w-5 mr-3"></i> Distribution
+            </a>
+            <a href="#productive-use" class="sidebar-link flex items-center px-6 py-3 transition-colors">
+                <i class="fas fa-industry w-5 mr-3"></i> Productive Use
+            </a>
+            <a href="#financials" class="sidebar-link flex items-center px-6 py-3 transition-colors">
+                <i class="fas fa-money-bill-trend-up w-5 mr-3"></i> Financial Model
+            </a>
+            <a href="#regulatory" class="sidebar-link flex items-center px-6 py-3 transition-colors">
+                <i class="fas fa-file-contract w-5 mr-3"></i> Regulatory
+            </a>
+            <a href="#community" class="sidebar-link flex items-center px-6 py-3 transition-colors">
+                <i class="fas fa-handshake w-5 mr-3"></i> Community
+            </a>
+            <a href="#calculator" class="sidebar-link flex items-center px-6 py-3 transition-colors mt-8 text-yellow-500 font-bold">
+                <i class="fas fa-calculator w-5 mr-3"></i> Savings Calculator
+            </a>
+        </nav>
+        <div class="absolute bottom-0 w-full p-6 bg-slate-800">
+            <p class="text-xs text-slate-400">Prepared by Stanley</p>
+            <p class="text-[10px] text-slate-500 mt-1 italic">Technical Site Audit Pending</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="md:ml-64 p-4 md:p-8 lg:p-12 pt-20 md:pt-0">
+        <!-- Content will be loaded from index.html -->
+        <p class="text-center text-slate-500">Content loaded from production build...</p>
+    </main>
+
+    <script>
+        function toggleMobileNav() {
+            const mobileNav = document.querySelector('.mobile-nav');
+            const overlay = document.querySelector('.mobile-overlay');
+            mobileNav.classList.toggle('open');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : 'auto';
+        }
+    </script>
+</body>
+</html>

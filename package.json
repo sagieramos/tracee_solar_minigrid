@@ -1,0 +1,47 @@
+{
+  "name": "tracee-solar-minigrid",
+  "version": "1.0.0",
+  "description": "Solar Mini-Grid Presentation Dashboard - Optimized for Production",
+  "scripts": {
+    "install:all": "npm install",
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "build:html": "node build-production.js",
+    "build:sw": "cp src/sw.js dist/sw.js",
+    "build:svg": "svgo -f src/assets -o ./dist --quiet 2>/dev/null || echo 'SVGO not installed, skipping...'",
+    "build": "npm run build:css && npm run build:html && npm run build:sw && echo '✅ Production build complete!'",
+    "minify": "node optimize.js",
+    "optimize:svg": "svgo -f src/assets 2>/dev/null || echo 'Install svgo: npm install -g svgo'",
+    "serve": "http-server -p 8080 -c-1 --cors",
+    "serve:dist": "http-server ./dist -p 8080 -c-1 --cors",
+    "serve:src": "http-server ./src -p 8081 -c-1 --cors",
+    "audit": "lighthouse http://localhost:8080/index.html --output=html --output-path=./lighthouse-report.html --quiet",
+    "clean": "rm -rf dist/*",
+    "deploy": "npm run build && echo '🚀 Ready to deploy! Copy files from ./dist'",
+    "deploy:netlify": "npm run build && netlify deploy --prod --dir=dist",
+    "deploy:vercel": "npm run build && vercel --prod",
+    "deploy:gh-pages": "npm run build && npx gh-pages -d dist"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "http-server": "^14.1.1",
+    "tailwindcss": "^3.4.0"
+  },
+  "optionalDependencies": {
+    "svgo": "^3.0.0"
+  },
+  "keywords": [
+    "solar",
+    "minigrid",
+    "presentation",
+    "dashboard",
+    "renewable-energy",
+    "nigeria",
+    "pwa"
+  ],
+  "author": "Stanley",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
