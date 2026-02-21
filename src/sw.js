@@ -36,14 +36,13 @@ self.addEventListener('activate', (event) => {
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
-                        return caches.delete(cacheName);
-                    }
+                    // Delete ALL old caches (not just tracee-solar-*)
+                    console.log('Deleting cache:', cacheName);
+                    return caches.delete(cacheName);
                 })
             );
         }).then(() => {
-            console.log('Service worker activated');
+            console.log('Service worker activated - all old caches cleared');
             return self.clients.claim();
         })
     );
