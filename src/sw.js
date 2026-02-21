@@ -1,7 +1,7 @@
 // Service Worker for TraceeSolar Minigrid
 // Provides offline support and caching for production build
 
-const CACHE_NAME = 'tracee-solar-v2';
+const CACHE_NAME = 'tracee-solar-v3';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
