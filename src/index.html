@@ -132,24 +132,49 @@
         #savings, #annualSavings, #currentSpend {
             transition: all 0.3s ease-out;
         }
-        
+
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* Roadmap marquee - swipe only, no auto-scroll */
+        /* Roadmap slider */
+        .roadmap-slider {
+            overflow: hidden;
+            touch-action: pan-y;
+            -webkit-user-select: none;
+            user-select: none;
+        }
         .roadmap-track {
-            touch-action: pan-x;
-            cursor: grab;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
         }
         .roadmap-track.dragging {
-            cursor: grabbing;
+            transition: none;
         }
-        
+        .roadmap-slide {
+            flex: 0 0 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0 1rem;
+        }
+        .roadmap-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .roadmap-dot.active {
+            background: #f59e0b;
+            width: 20px;
+            border-radius: 4px;
+        }
+
         /* Smooth scroll padding for fixed header */
         html {
             scroll-padding-top: 80px;
@@ -266,36 +291,72 @@
         <!-- Top Navigation / Hero Header -->
         <div id="overview" class="p-4 md:p-12 lg:p-16 pb-0 md:pb-0 lg:pb-0 pt-4 lg:pt-16">
             <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-[10px] font-black rounded-full border border-yellow-200 uppercase tracking-widest shadow-sm">Strategy Prep</span>
-                            <span class="px-3 py-1 bg-slate-900 text-white text-[10px] font-black rounded-full uppercase tracking-widest shadow-sm" title="IDG-Internal: Internal Distribution Grid infrastructure within the client site">IDG-Internal</span>
-                        </div>
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight">Solar Mini-Grid <span class="text-yellow-500 italic">Portfolio</span></h1>
-                        <p class="text-slate-500 text-lg md:text-xl font-medium max-w-2xl">Nigeria Rural Utility Infrastructure Development Strategy & Technical Feasibility Modeling.</p>
+                
+                <!-- Investor Brief Header -->
+                <div class="mb-8">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-3">Investor Brief – Tracee Solar Mini-Grid Project</h1>
+                    <p class="text-slate-600 text-base md:text-lg font-medium max-w-4xl">A data-driven, risk-controlled solar mini-grid opportunity designed to reduce fuel dependency, stabilize power supply, and generate predictable long-term cash flow.</p>
+                </div>
+
+                <!-- Badges and Status -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8">
+                    <div class="flex items-center gap-3">
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-[10px] font-black rounded-full border border-yellow-200 uppercase tracking-widest shadow-sm">Strategy Prep</span>
+                        <span class="px-3 py-1 bg-slate-900 text-white text-[10px] font-black rounded-full uppercase tracking-widest shadow-sm" title="IDG-Internal: Internal Distribution Grid infrastructure within the client site">IDG-Internal</span>
                     </div>
-                    
+
                     <div class="flex items-center gap-4">
                         <div class="bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center group cursor-help transition-all hover:border-yellow-500">
-                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 group-hover:text-yellow-600">Site Audit Status</span>
-                            <span class="text-xs font-bold text-slate-900 flex items-center gap-2 text-center"><i class="fas fa-clock text-yellow-500"></i> Pending Load Data Logging<br><span class="text-[9px] text-slate-500 font-medium">(Subject to Client Approval)</span></span>
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 group-hover:text-yellow-600">Site Assessment Status</span>
+                            <span class="text-xs font-bold text-slate-900 flex items-center gap-2 text-center"><i class="fas fa-clock text-yellow-500"></i> Awaiting Approval for Load Data Logging</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Executive Summary - Investor Brief -->
-                <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 md:p-10 lg:p-12 mt-12 shadow-2xl border border-slate-700">
+                <!-- Project Snapshot Section -->
+                <div class="bg-white rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 mb-12">
+                    <h2 class="text-lg md:text-xl font-black text-slate-900 uppercase tracking-tight mb-6 flex items-center gap-3">
+                        <div class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-camera text-white text-sm"></i>
+                        </div>
+                        Project Snapshot
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+                        <div class="text-center md:text-left">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Target Site</p>
+                            <p class="text-sm md:text-base font-bold text-slate-900">Tracee Facility</p>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Energy Objective</p>
+                            <p class="text-sm md:text-base font-bold text-slate-900">Reduce Diesel & Grid Instability</p>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Assessment Status</p>
+                            <p class="text-sm md:text-base font-bold text-slate-900">Awaiting Approval</p>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Revenue Model</p>
+                            <p class="text-sm md:text-base font-bold text-slate-900">Anchor + Commercial + Telecom ESCO</p>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Project Structure</p>
+                            <p class="text-sm md:text-base font-bold text-slate-900">Solar + Battery Hybrid</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Investment Metrics -->
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 md:p-10 lg:p-12 mb-12 shadow-2xl border border-slate-700">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center">
                             <i class="fas fa-chart-line text-slate-900 text-xl"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl md:text-2xl font-black text-white uppercase tracking-tight">Investor Brief – Solar Mini-Grid Deployment</h2>
-                            <p class="text-slate-300 text-sm md:text-base mt-1">A data-driven, risk-controlled mini-grid project designed to reduce fuel dependency, stabilize energy supply, and generate predictable long-term cash flow.</p>
+                            <h2 class="text-xl md:text-2xl font-black text-white uppercase tracking-tight">Key Investment Metrics</h2>
+                            <p class="text-slate-300 text-sm md:text-base mt-1">Preliminary indicators subject to load data validation.</p>
                         </div>
                     </div>
-                    
+
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                         <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-5 border border-white/20">
                             <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Target Load</p>
@@ -316,8 +377,41 @@
                     </div>
                 </div>
 
+                <!-- Investor Benefits Section -->
+                <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-3xl p-6 md:p-10 lg:p-12 mb-12 shadow-lg border border-emerald-200">
+                    <h2 class="text-xl md:text-2xl font-black text-emerald-900 uppercase tracking-tight mb-8 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-hand-holding-dollar text-white text-lg"></i>
+                        </div>
+                        Investor Benefits
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-emerald-100">
+                            <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mb-4">
+                                <i class="fas fa-chart-pie text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-black text-slate-900 mb-2">Predictable Revenue</h3>
+                            <p class="text-slate-600 text-sm">Backed by validated load data and anchor tenants</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-emerald-100">
+                            <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mb-4">
+                                <i class="fas fa-gas-pump text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-black text-slate-900 mb-2">Reduced Fuel Expenditure</h3>
+                            <p class="text-slate-600 text-sm">92%+ diesel displacement vs. baseline</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-emerald-100">
+                            <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mb-4">
+                                <i class="fas fa-percent text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-black text-slate-900 mb-2">DSCR Optimization</h3>
+                            <p class="text-slate-600 text-sm">Structured path to 1.3x–1.5x coverage ratio</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Strategic Stats -->
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 lg:gap-6 mt-12">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 lg:gap-6">
                     <div class="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl card-premium group relative overflow-hidden">
                         <div class="absolute -top-1 -right-1 md:top-4 md:right-6 text-slate-100/60 md:text-slate-100 group-hover:text-yellow-500/10 transition-colors">
                             <i class="fas fa-sun text-3xl md:text-4xl"></i>
@@ -382,9 +476,12 @@
             <section id="roadmap">
                 <div class="flex items-center gap-4 mb-10">
                     <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">01</div>
-                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Implementation Roadmap</h2>
+                    <div>
+                        <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Deployment Roadmap</h2>
+                        <p class="text-slate-500 text-sm mt-1">Each milestone converts technical progress into revenue certainty.</p>
+                    </div>
                 </div>
-                
+
                 <!-- Desktop: static layout -->
                 <div class="bg-white rounded-2xl md:rounded-[2rem] border border-slate-200 shadow-sm overflow-hidden p-1 hidden lg:block">
                     <div class="p-12 flex justify-between items-center relative">
@@ -393,82 +490,87 @@
 
                         <div class="flex flex-col items-center text-center w-40 relative group">
                             <div class="w-14 h-14 rounded-full bg-yellow-500 text-slate-900 flex items-center justify-center text-lg font-black mb-4 shadow-xl z-10 transition-transform group-hover:scale-110">1</div>
-                            <p class="text-sm font-black text-slate-900 uppercase tracking-tighter">Load Audit</p>
-                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">Planned 48-Hour Assessment<br><span class="text-[9px] font-normal">(Post-Approval)</span></p>
+                            <p class="text-sm font-black text-slate-900 uppercase tracking-tighter">Data Validation</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">Load Logging &amp; Analysis</p>
                         </div>
                         <div class="flex flex-col items-center text-center w-40 relative group">
                             <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-lg font-black mb-4 border-4 border-white shadow-sm z-10">2</div>
-                            <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Sizing</p>
-                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">7-Day Analysis</p>
+                            <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">System Sizing</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">Final Bankable Design</p>
                         </div>
                         <div class="flex flex-col items-center text-center w-40 relative group">
                             <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-lg font-black mb-4 border-4 border-white shadow-sm z-10">3</div>
-                            <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Procurement</p>
-                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">4-6 Week Supply</p>
+                            <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Financial Structuring</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">CAPEX &amp; DSCR Finalization</p>
                         </div>
                         <div class="flex flex-col items-center text-center w-40 relative group">
                             <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-lg font-black mb-4 border-4 border-white shadow-sm z-10">4</div>
-                            <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Construction</p>
-                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">2-Week Deployment</p>
+                            <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Procurement &amp; Install</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">Tier-1 Equipment</p>
                         </div>
                         <div class="flex flex-col items-center text-center w-40 relative group">
                             <div class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-lg font-black mb-4 shadow-lg z-10"><i class="fas fa-check"></i></div>
-                            <p class="text-sm font-black text-emerald-600 uppercase tracking-tighter">Power On</p>
-                            <p class="text-[10px] text-emerald-500 mt-1 italic font-bold">Commissioning</p>
+                            <p class="text-sm font-black text-emerald-600 uppercase tracking-tighter">Revenue Activation</p>
+                            <p class="text-[10px] text-emerald-500 mt-1 italic font-bold">Commissioning &amp; Cash Flow</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mobile: continuous marquee -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden lg:hidden" id="roadmapMarquee">
-                    <div class="py-6 pb-10 overflow-hidden relative">
-                        <!-- Fade edges to indicate scrollability -->
-                        <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-                        <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-                        
-                        <!-- Scroll hint - swipe indicator -->
-                        <div class="absolute bottom-1 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 text-[10px] text-slate-400 font-medium">
-                            <i class="fas fa-chevron-left text-xs"></i>
-                            <span>SWIPE</span>
-                            <i class="fas fa-chevron-right text-xs"></i>
-                        </div>
-
-                        <div class="roadmap-track flex gap-8 items-center px-6" id="roadmapTrack">
+                <!-- Mobile: swipeable auto-advancing slider -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden lg:hidden" id="roadmapSlider">
+                    <div class="roadmap-slider py-4 relative" id="roadmapSliderInner">
+                        <div class="roadmap-track" id="roadmapTrack">
                             <!-- Slide 1 -->
-                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
-                                <div class="w-12 h-12 rounded-full bg-yellow-500 text-slate-900 flex items-center justify-center text-base font-black mb-3 shadow-xl">1</div>
-                                <p class="text-xs font-black text-slate-900 uppercase tracking-tighter">Load Audit</p>
-                                <p class="text-[9px] text-slate-400 mt-0.5 italic font-bold">Planned 48-Hour<br><span class="font-normal">(Post-Approval)</span></p>
+                            <div class="roadmap-slide">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="w-14 h-14 rounded-full bg-yellow-500 text-slate-900 flex items-center justify-center text-lg font-black mb-3 shadow-xl">1</div>
+                                    <p class="text-sm font-black text-slate-900 uppercase tracking-tighter">Data Validation</p>
+                                    <p class="text-xs text-slate-400 mt-1 italic font-bold">Load Logging &amp; Analysis</p>
+                                </div>
                             </div>
-                            <div class="shrink-0 w-8 h-[2px] bg-slate-200 rounded-full"></div>
                             <!-- Slide 2 -->
-                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
-                                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-base font-black mb-3 border-3 border-white shadow-sm">2</div>
-                                <p class="text-xs font-black text-slate-400 uppercase tracking-tighter">Sizing</p>
-                                <p class="text-[9px] text-slate-400 mt-0.5 italic font-bold">7-Day Analysis</p>
+                            <div class="roadmap-slide">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-lg font-black mb-3 border-3 border-white shadow-sm">2</div>
+                                    <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">System Sizing</p>
+                                    <p class="text-xs text-slate-400 mt-1 italic font-bold">Final Bankable Design</p>
+                                </div>
                             </div>
-                            <div class="shrink-0 w-8 h-[2px] bg-slate-200 rounded-full"></div>
                             <!-- Slide 3 -->
-                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
-                                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-base font-black mb-3 border-3 border-white shadow-sm">3</div>
-                                <p class="text-xs font-black text-slate-400 uppercase tracking-tighter">Procurement</p>
-                                <p class="text-[9px] text-slate-400 mt-0.5 italic font-bold">4-6 Wk Supply</p>
+                            <div class="roadmap-slide">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-lg font-black mb-3 border-3 border-white shadow-sm">3</div>
+                                    <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Financial Structuring</p>
+                                    <p class="text-xs text-slate-400 mt-1 italic font-bold">CAPEX &amp; DSCR</p>
+                                </div>
                             </div>
-                            <div class="shrink-0 w-8 h-[2px] bg-slate-200 rounded-full"></div>
                             <!-- Slide 4 -->
-                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
-                                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-base font-black mb-3 border-3 border-white shadow-sm">4</div>
-                                <p class="text-xs font-black text-slate-400 uppercase tracking-tighter">Construction</p>
-                                <p class="text-[9px] text-slate-400 mt-0.5 italic font-bold">2-Wk Deploy</p>
+                            <div class="roadmap-slide">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-lg font-black mb-3 border-3 border-white shadow-sm">4</div>
+                                    <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Procurement &amp; Install</p>
+                                    <p class="text-xs text-slate-400 mt-1 italic font-bold">Tier-1 Equipment</p>
+                                </div>
                             </div>
-                            <div class="shrink-0 w-8 h-[2px] bg-slate-200 rounded-full"></div>
                             <!-- Slide 5 -->
-                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
-                                <div class="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center text-base font-black mb-3 shadow-lg"><i class="fas fa-check text-sm"></i></div>
-                                <p class="text-xs font-black text-emerald-600 uppercase tracking-tighter">Power On</p>
-                                <p class="text-[9px] text-emerald-500 mt-0.5 italic font-bold">Commission</p>
+                            <div class="roadmap-slide">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-lg font-black mb-3 shadow-lg"><i class="fas fa-check text-sm"></i></div>
+                                    <p class="text-sm font-black text-emerald-600 uppercase tracking-tighter">Revenue Activation</p>
+                                    <p class="text-xs text-emerald-500 mt-1 italic font-bold">Commissioning</p>
+                                </div>
                             </div>
                         </div>
+                        <!-- Dot indicators -->
+                        <div class="flex justify-center gap-1.5 mt-3" id="roadmapDots">
+                            <div class="roadmap-dot active" data-slide="0"></div>
+                            <div class="roadmap-dot" data-slide="1"></div>
+                            <div class="roadmap-dot" data-slide="2"></div>
+                            <div class="roadmap-dot" data-slide="3"></div>
+                            <div class="roadmap-dot" data-slide="4"></div>
+                        </div>
+                        <!-- Slide counter -->
+                        <p class="text-center text-[10px] text-slate-400 mt-1 font-mono" id="roadmapCounter">1 / 5</p>
                     </div>
                 </div>
             </section>
@@ -482,32 +584,47 @@
                         </div>
                         <div>
                             <h2 class="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">The Opportunity</h2>
-                            <p class="text-slate-600 text-sm md:text-base mt-2">High diesel dependency and unstable grid supply create excessive Fuel OPEX and operational risk. This project replaces volatile fuel costs with stable solar-driven energy economics.</p>
                         </div>
                     </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                        <div class="bg-white rounded-2xl p-5 border border-red-100 shadow-sm">
-                            <div class="flex items-center gap-3 mb-3">
-                                <i class="fas fa-gas-pump text-red-500 text-xl"></i>
-                                <h4 class="font-black text-slate-900 uppercase text-sm">Diesel Dependency</h4>
+
+                    <!-- Market Challenge -->
+                    <div class="mb-8">
+                        <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-3 flex items-center gap-2">
+                            <i class="fas fa-triangle-exclamation text-red-500"></i> The Market Challenge
+                        </h3>
+                        <p class="text-slate-700 text-sm md:text-base leading-relaxed mb-6">Unreliable grid supply and high diesel dependence create volatile Fuel OPEX, operational downtime, and unpredictable energy costs. This exposes the facility to financial and operational risk.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                            <div class="bg-white rounded-2xl p-5 border border-red-100 shadow-sm">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <i class="fas fa-gas-pump text-red-500 text-xl"></i>
+                                    <h4 class="font-black text-slate-900 uppercase text-sm">Diesel Dependency</h4>
+                                </div>
+                                <p class="text-sm text-slate-600 italic">Unpredictable fuel costs erode margins and create cash flow volatility.</p>
                             </div>
-                            <p class="text-sm text-slate-600 italic">Unpredictable fuel costs erode margins and create cash flow volatility.</p>
-                        </div>
-                        <div class="bg-white rounded-2xl p-5 border border-orange-100 shadow-sm">
-                            <div class="flex items-center gap-3 mb-3">
-                                <i class="fas fa-bolt text-orange-500 text-xl"></i>
-                                <h4 class="font-black text-slate-900 uppercase text-sm">Grid Instability</h4>
+                            <div class="bg-white rounded-2xl p-5 border border-orange-100 shadow-sm">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <i class="fas fa-bolt text-orange-500 text-xl"></i>
+                                    <h4 class="font-black text-slate-900 uppercase text-sm">Grid Instability</h4>
+                                </div>
+                                <p class="text-sm text-slate-600 italic">National grid (DisCo – Distribution Company) uptime averages 30-60%, disrupting operations.</p>
                             </div>
-                            <p class="text-sm text-slate-600 italic">National grid (DisCo) uptime averages 30-60%, disrupting operations.</p>
-                        </div>
-                        <div class="bg-white rounded-2xl p-5 border border-yellow-100 shadow-sm">
-                            <div class="flex items-center gap-3 mb-3">
-                                <i class="fas fa-chart-down text-yellow-600 text-xl"></i>
-                                <h4 class="font-black text-slate-900 uppercase text-sm">OPEX Volatility</h4>
+                            <div class="bg-white rounded-2xl p-5 border border-yellow-100 shadow-sm">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <i class="fas fa-chart-down text-yellow-600 text-xl"></i>
+                                    <h4 class="font-black text-slate-900 uppercase text-sm">OPEX Volatility</h4>
+                                </div>
+                                <p class="text-sm text-slate-600 italic">Fuel price fluctuations make financial planning unreliable.</p>
                             </div>
-                            <p class="text-sm text-slate-600 italic">Fuel price fluctuations make financial planning unreliable.</p>
                         </div>
+                    </div>
+
+                    <!-- Investment Opportunity -->
+                    <div class="bg-white rounded-2xl border-l-4 border-emerald-500 p-6">
+                        <h3 class="text-sm font-black text-emerald-800 uppercase tracking-widest mb-3 flex items-center gap-2">
+                            <i class="fas fa-chart-line text-emerald-600"></i> The Investment Opportunity
+                        </h3>
+                        <p class="text-slate-700 text-sm md:text-base leading-relaxed">A properly sized solar mini-grid replaces volatile diesel costs with predictable, lower LCOE (Levelized Cost of Energy) energy production — improving cash flow stability and reducing long-term operating expenses.</p>
                     </div>
                 </div>
             </section>
@@ -569,6 +686,26 @@
                             </div>
                         </div>
                     </div>
+                    <p class="text-xs text-slate-500 italic mt-8 text-center">This phased validation approach ensures system sizing accuracy and protects investor capital.</p>
+                </div>
+            </section>
+
+            <!-- Industrial Loggers Definition -->
+            <section id="industrial-loggers" class="scroll-mt-24">
+                <div class="bg-slate-50 rounded-3xl p-6 md:p-10 lg:p-12 border border-slate-200">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-microchip text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">Industrial Loggers</h2>
+                            <p class="text-slate-500 text-sm md:text-base mt-1">Technical definition for investor clarity.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8">
+                        <p class="text-slate-700 text-base md:text-lg leading-relaxed mb-4"><strong>Industrial Loggers</strong> are devices installed temporarily within the facility to continuously record electrical parameters such as voltage, current, power, and harmonics.</p>
+                        <p class="text-slate-700 text-base md:text-lg leading-relaxed">They provide accurate load profiling required for bankable system design and financial modeling, eliminating sizing uncertainty and protecting investor capital from over- or under-sizing risk.</p>
+                    </div>
                 </div>
             </section>
 
@@ -605,7 +742,7 @@
             <section id="discovery">
                 <div class="flex items-center gap-4 mb-10">
                     <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">02</div>
-                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Technical Discovery</h2>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Technical Load Assessment Proposal</h2>
                 </div>
 
                 <!-- Data Validation Status Notice -->
@@ -623,6 +760,39 @@
                                 <li class="flex items-center gap-2"><i class="fas fa-check text-amber-600"></i> Voltage, current, power, harmonics profiling</li>
                                 <li class="flex items-center gap-2"><i class="fas fa-file text-amber-600"></i> Technical Briefing Note issued to stakeholders</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why This Phase Matters to Investors -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 mb-10">
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-4 flex items-center gap-2">
+                        <i class="fas fa-circle-info text-blue-500"></i> Why This Phase Matters to Investors
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-slate-900 text-sm">Eliminates Load Uncertainty</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-slate-900 text-sm">Prevents Over/Undersizing</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-slate-900 text-sm">Improves CAPEX Accuracy</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-slate-900 text-sm">Strengthens DSCR Modeling</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -833,7 +1003,8 @@
                                 </div>
                                 <h4 class="font-black text-slate-900 uppercase text-sm">Anchor Loads</h4>
                             </div>
-                            <p class="text-sm text-slate-600 italic">Telecom ESCO &amp; commercial users providing stable baseline revenue.</p>
+                            <p class="text-sm text-slate-600 italic">Telecom ESCO (Energy Service Company) &amp; commercial users providing stable baseline revenue.</p>
+                            <p class="text-xs text-emerald-700 mt-2 font-medium italic">→ Improves cash flow predictability and strengthens DSCR performance</p>
                         </div>
                         <div class="bg-white rounded-2xl p-5 border border-emerald-100 shadow-sm">
                             <div class="flex items-center gap-3 mb-3">
@@ -876,9 +1047,9 @@
                                 <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center">
                                     <i class="fas fa-hand-holding-dollar text-slate-600"></i>
                                 </div>
-                                <h4 class="font-black text-slate-900 uppercase text-sm">Hybrid Backup Revenue</h4>
+                                <h4 class="font-black text-slate-900 uppercase text-sm">Stable Long-Term Contracts</h4>
                             </div>
-                            <p class="text-sm text-slate-600 italic">Optional generator integration for premium reliability tiers.</p>
+                            <p class="text-sm text-slate-600 italic">Multi-year energy purchase agreements with creditworthy off-takers.</p>
                         </div>
                     </div>
                 </div>
@@ -931,9 +1102,42 @@
             <section id="financials">
                 <div class="flex items-center gap-4 mb-10">
                     <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">06</div>
-                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Economic Case</h2>
+                    <div>
+                        <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Economic Case</h2>
+                        <p class="text-slate-500 text-sm mt-1">Solar mini-grid eliminates high and volatile diesel fuel costs, improves system uptime vs. national grid, and delivers a predictable cost per kWh, enhancing investor returns.</p>
+                    </div>
                 </div>
-                
+
+                <!-- Economic Advantage Summary -->
+                <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 mb-10">
+                    <h3 class="text-sm font-black text-yellow-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                        <i class="fas fa-chart-line"></i> Economic Advantage
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-white text-sm">Reduced Diesel Consumption</p>
+                                <p class="text-xs text-slate-400 italic">92%+ displacement of diesel generation</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-white text-sm">Lower Long-Term LCOE</p>
+                                <p class="text-xs text-slate-400 italic">Levelized Cost of Energy reduced by ~42%</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-white text-sm">Increased System Uptime</p>
+                                <p class="text-xs text-slate-400 italic">99.9% target vs. 30-60% grid average</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                     <div class="bg-white p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border border-slate-200 shadow-sm space-y-8 md:space-y-10">
                         <div class="space-y-4">
@@ -1491,6 +1695,113 @@
                 }
             });
         });
+
+        // Roadmap Slider
+        (function() {
+            const track = document.getElementById('roadmapTrack');
+            const dots = document.querySelectorAll('#roadmapDots .roadmap-dot');
+            const counter = document.getElementById('roadmapCounter');
+            if (!track) return;
+
+            const totalSlides = 5;
+            let current = 0;
+            let autoTimer;
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+
+            function goTo(index) {
+                current = ((index % totalSlides) + totalSlides) % totalSlides;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+                counter.textContent = (current + 1) + ' / ' + totalSlides;
+            }
+
+            function next() { goTo(current + 1); }
+
+            function startAuto() {
+                stopAuto();
+                autoTimer = setInterval(next, 3000);
+            }
+
+            function stopAuto() {
+                clearInterval(autoTimer);
+            }
+
+            // Touch events
+            track.addEventListener('touchstart', function(e) {
+                stopAuto();
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                currentX = startX;
+                track.classList.add('dragging');
+            }, { passive: true });
+
+            track.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX;
+                var diff = currentX - startX;
+                var base = -(current * track.parentElement.offsetWidth);
+                track.style.transform = 'translateX(' + (base + diff) + 'px)';
+            }, { passive: true });
+
+            track.addEventListener('touchend', function() {
+                if (!isDragging) return;
+                isDragging = false;
+                track.classList.remove('dragging');
+                var diff = currentX - startX;
+                if (Math.abs(diff) > 40) {
+                    if (diff < 0) next();
+                    else goTo(current - 1);
+                } else {
+                    goTo(current);
+                }
+                startAuto();
+            });
+
+            // Mouse drag for desktop testing
+            track.addEventListener('mousedown', function(e) {
+                stopAuto();
+                isDragging = true;
+                startX = e.clientX;
+                currentX = startX;
+                track.classList.add('dragging');
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                currentX = e.clientX;
+                var diff = currentX - startX;
+                var base = -(current * track.parentElement.offsetWidth);
+                track.style.transform = 'translateX(' + (base + diff) + 'px)';
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (!isDragging) return;
+                isDragging = false;
+                track.classList.remove('dragging');
+                var diff = currentX - startX;
+                if (Math.abs(diff) > 40) {
+                    if (diff < 0) next();
+                    else goTo(current - 1);
+                } else {
+                    goTo(current);
+                }
+                startAuto();
+            });
+
+            // Dot click
+            dots.forEach(function(dot) {
+                dot.addEventListener('click', function() {
+                    goTo(parseInt(this.dataset.slide));
+                    startAuto();
+                });
+            });
+
+            goTo(0);
+            startAuto();
+        })();
 
         // Initialize
         updateCalculator();
