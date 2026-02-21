@@ -65,7 +65,7 @@
 **Goal:** Define the solution as a self-sustaining utility-grade power plant.
 
 ### Presentation Tips
-*   **The "Local Power Station":** Frame it as a decentralized utility that provides higher reliability than the national grid (DisCo).
+*   **The "Local Power Station":** Frame it as a decentralized utility that provides higher reliability than the national grid (DisCo — Distribution Company).
 
 ---
 
@@ -107,7 +107,7 @@
 **Goal:** Ensure project bankability through stable daytime demand.
 
 ### Discussion Topics
-*   **Anchor Loads:** Identifying mills, cold storage, or water pumping to consume daytime surplus.
+*   **Anchor Loads:** Identifying mills, cold storage, or water pumping to consume daytime surplus (stable commercial users that ensure project bankability).
 *   **SME Support:** Strategy for powering welding shops, salons, and charging hubs.
 *   **Revenue Stability:** Productive use customers provide the reliable cash flow needed for high ROI.
 
@@ -176,7 +176,7 @@
 
 *   **30% Sponsor Equity**
 *   **70% Debt** (7–10 year tenor with DFI or local infrastructure banks).
-*   **Target DSCR:** 1.3x – 1.5x (Debt Service Coverage Ratio).
+*   **Target DSCR:** 1.3x – 1.5x (Debt Service Coverage Ratio — measures cash flow available to pay debt obligations).
 
 ### Revenue Waterfall (Order of Priority)
 1.  **O&M Costs** (Operations & Maintenance)
@@ -202,7 +202,7 @@
 
 ### Our Edge
 1.  **Engineering-First:** We design utility-grade assets structured for institutional capital.
-2.  **Regulatory Experts:** We handle the NERC, Environmental (EIA), and DisCo filings.
+2.  **Regulatory Experts:** We handle the NERC (Nigerian Electricity Regulatory Commission), Environmental (EIA), and DisCo (Distribution Company) filings.
 3.  **Local O&M:** Real-time remote monitoring from our operations center.
 
 ### Next Steps
