@@ -2,8 +2,8 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar Mini-Grid Presentation Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Solar Mini-Grid Strategic Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="output.css">
@@ -24,13 +24,11 @@
                     animation: {
                         'fade-in': 'fadeIn 0.6s ease-out',
                         'slide-up': 'slideUp 0.5s ease-out',
-                        'slide-in-left': 'slideInLeft 0.5s ease-out',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
                         slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        slideInLeft: { '0%': { opacity: '0', transform: 'translateX(-20px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
                     },
                 }
             }
@@ -43,84 +41,113 @@
         }
         .sidebar-link:hover {
             background-color: rgba(255, 255, 255, 0.08);
-            border-left-color: rgba(251, 191, 36, 0.5);
+            border-left-color: #f59e0b;
             transform: translateX(4px);
         }
         .active-link {
-            background-color: rgba(251, 191, 36, 0.15);
-            border-left-color: #fbbf24;
-        }
-        .card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        .checkbox-custom:checked + label {
-            color: #f59e0b;
+            background-color: rgba(245, 158, 11, 0.15);
+            border-left-color: #f59e0b;
+            color: #f59e0b !important;
             font-weight: 700;
         }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .card-premium {
+            background: white;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .gradient-primary {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        .card-premium:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            border-color: rgba(245, 158, 11, 0.3);
         }
-        .gradient-accent {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .section-tag {
+            transition: all 0.3s ease;
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        section:hover .section-tag {
+            transform: scale(1.1) rotate(-3deg);
+            background-color: #f59e0b;
+            color: #0f172a;
         }
-        .shadow-glow {
-            box-shadow: 0 0 40px rgba(251, 191, 36, 0.15);
-        }
-        .section-number {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        }
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
-        /* Mobile Navigation */
+        /* Mobile Specifics */
         .mobile-nav {
             transform: translateX(-100%);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .mobile-nav.open {
-            transform: translateX(0);
-        }
+        .mobile-nav.open { transform: translateX(0); }
         .mobile-overlay {
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
         }
-        .mobile-overlay.open {
-            opacity: 1;
-            visibility: visible;
-        }
+        .mobile-overlay.open { opacity: 1; visibility: visible; }
         
-        /* Auto-hiding Mobile Header */
-        header.md\:hidden {
-            transition: transform 0.3s ease-in-out;
+        header.lg\:hidden {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        header.md\:hidden.header-hidden {
+        header.lg\:hidden.header-hidden {
             transform: translateY(-100%);
         }
         
-        /* Touch-friendly targets */
-        @media (max-width: 768px) {
-            .touch-target {
-                min-height: 44px;
-                min-width: 44px;
+        /* Custom Inputs */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background: #f59e0b;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+            border: 3px solid white;
+        }
+        @media (min-width: 768px) {
+            input[type="range"]::-webkit-slider-thumb {
+                height: 20px;
+                width: 20px;
             }
+        }
+        input[type="range"]::-moz-range-thumb {
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background: #f59e0b;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+            border: 3px solid white;
+        }
+        @media (min-width: 768px) {
+            input[type="range"]::-moz-range-thumb {
+                height: 20px;
+                width: 20px;
+            }
+        }
+        
+        .touch-target {
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #savings, #annualSavings, #currentSpend {
+            transition: all 0.3s ease-out;
+        }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Roadmap marquee - swipe only, no auto-scroll */
+        .roadmap-track {
+            touch-action: pan-x;
+            cursor: grab;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .roadmap-track.dragging {
+            cursor: grabbing;
         }
         
         /* Smooth scroll padding for fixed header */
@@ -129,617 +156,847 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 via-slate-100 to-slate-50 text-slate-900 antialiased">
+<body class="bg-slate-50 text-slate-900 antialiased font-sans selection:bg-yellow-200">
 
     <!-- Mobile Header -->
-    <header class="md:hidden fixed top-0 left-0 right-0 bg-slate-900 text-white z-50 shadow-lg">
-        <div class="flex items-center justify-between px-4 py-3">
-            <div class="flex items-center gap-3">
-                <button onclick="toggleMobileNav()" class="touch-target p-2 -ml-2 text-white hover:text-yellow-500 transition-colors" aria-label="Toggle menu">
-                    <i class="fas fa-bars text-xl"></i>
+    <header class="lg:hidden fixed top-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md text-white z-50 shadow-xl border-b border-white/5">
+        <div class="flex items-center justify-between px-5 py-4">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleMobileNav()" class="w-10 h-10 flex items-center justify-center -ml-2 rounded-xl active:bg-white/10 transition-colors" aria-label="Toggle menu">
+                    <i class="fas fa-bars-staggered text-xl"></i>
                 </button>
-                <h1 class="text-lg font-bold text-yellow-500"><i class="fas fa-bolt mr-2"></i>TraceeSolar</h1>
+                <h1 class="text-xl font-black tracking-tighter text-yellow-500">TraceeSolar</h1>
             </div>
-            <span class="text-xs text-slate-400 uppercase tracking-wider">Dashboard</span>
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Live</span>
+            </div>
         </div>
     </header>
 
-    <!-- Mobile Navigation Overlay -->
-    <div class="mobile-overlay fixed inset-0 bg-black/50 z-40 md:hidden" onclick="toggleMobileNav()"></div>
+    <!-- Navigation Overlays -->
+    <div class="mobile-overlay fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 lg:hidden" onclick="toggleMobileNav()"></div>
 
-    <!-- Mobile Sidebar -->
-    <aside class="mobile-nav fixed top-0 left-0 h-screen w-72 bg-slate-900 text-white z-50 overflow-y-auto md:hidden">
-        <div class="p-6 border-b border-slate-800 flex items-center justify-between">
-            <div>
-                <h1 class="text-xl font-bold text-yellow-500"><i class="fas fa-bolt mr-2"></i>TraceeSolar</h1>
-                <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest font-semibold">Project Portal</p>
-            </div>
-            <button onclick="toggleMobileNav()" class="touch-target p-2 -mr-2 text-slate-400 hover:text-white transition-colors" aria-label="Close menu">
-                <i class="fas fa-times text-xl"></i>
-            </button>
+    <!-- Mobile Navigation Drawer -->
+    <aside class="mobile-nav fixed top-0 left-0 h-screen w-[85%] max-w-[320px] bg-slate-900 text-white z-50 shadow-2xl flex flex-col lg:hidden">
+        <div class="p-8 border-b border-white/5">
+            <h1 class="text-2xl font-black tracking-tighter text-yellow-500">TraceeSolar</h1>
+            <p class="text-[10px] text-slate-500 mt-2 uppercase tracking-[0.3em] font-bold">Planning Suite</p>
         </div>
-        <nav class="mt-4 pb-20">
-            <a href="#overview" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors active-link touch-target">
-                <i class="fas fa-chart-line w-5 mr-3"></i> Overview
+        <nav class="flex-1 overflow-y-auto py-6">
+            <div class="px-8 mb-4 text-[10px] font-black text-slate-600 uppercase tracking-widest">Main Modules</div>
+            <a href="#overview" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-8 py-4 transition-all active-link">
+                <i class="fas fa-chart-pie w-6 text-sm"></i> Executive Summary
             </a>
-            <a href="#discovery" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
-                <i class="fas fa-search w-5 mr-3"></i> Discovery
+            <a href="#discovery" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-8 py-4 transition-all">
+                <i class="fas fa-fingerprint w-6 text-sm"></i> Data Capture
             </a>
-            <a href="#architecture" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
-                <i class="fas fa-microchip w-5 mr-3"></i> Architecture
+            <a href="#architecture" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-8 py-4 transition-all">
+                <i class="fas fa-microchip w-6 text-sm"></i> Engineering
             </a>
-            <a href="#distribution" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
-                <i class="fas fa-network-wired w-5 mr-3"></i> Distribution
+            <a href="#distribution" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-8 py-4 transition-all">
+                <i class="fas fa-project-diagram w-6 text-sm"></i> Distribution
             </a>
-            <a href="#productive-use" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
-                <i class="fas fa-industry w-5 mr-3"></i> Productive Use
+            <a href="#productive-use" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-8 py-4 transition-all">
+                <i class="fas fa-industry w-6 text-sm"></i> Load Optimization
             </a>
-            <a href="#financials" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
-                <i class="fas fa-money-bill-trend-up w-5 mr-3"></i> Financial Model
+            <a href="#financials" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-8 py-4 transition-all">
+                <i class="fas fa-vault w-6 text-sm"></i> Financial Model
             </a>
-            <a href="#regulatory" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
-                <i class="fas fa-file-contract w-5 mr-3"></i> Regulatory
+            <a href="#regulatory" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-8 py-4 transition-all">
+                <i class="fas fa-gavel w-6 text-sm"></i> Compliance
             </a>
-            <a href="#community" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors touch-target">
-                <i class="fas fa-handshake w-5 mr-3"></i> Community
-            </a>
-            <a href="#calculator" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-6 py-4 transition-colors mt-4 text-yellow-500 font-bold touch-target">
-                <i class="fas fa-calculator w-5 mr-3"></i> Savings Calculator
+            <a href="#calculator" onclick="toggleMobileNav()" class="sidebar-link flex items-center px-8 py-5 mt-6 bg-yellow-500/5 text-yellow-500 border-y border-yellow-500/10">
+                <i class="fas fa-calculator w-6 text-sm"></i> Modeling Engine
             </a>
         </nav>
-        <div class="absolute bottom-0 w-full p-6 bg-slate-800">
-            <p class="text-sm text-slate-400">Technical Strategy Draft</p>
-            <p class="text-xs text-slate-500 mt-1 italic">Technical Site Audit Pending</p>
+        <div class="p-8 bg-black/20 text-center">
+            <p class="text-[10px] text-slate-500 italic">Confidential Internal Document</p>
         </div>
     </aside>
 
     <!-- Desktop Sidebar -->
-    <aside class="fixed top-0 left-0 h-screen w-64 bg-slate-900 text-white z-50 overflow-y-auto hidden md:block">
-        <div class="p-6 border-b border-slate-800">
-            <h1 class="text-xl font-bold text-yellow-500"><i class="fas fa-bolt mr-2"></i>TraceeSolar</h1>
-            <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest font-semibold">Project Portal</p>
+    <aside class="fixed top-0 left-0 h-screen w-72 bg-slate-900 text-white z-50 overflow-hidden hidden lg:flex flex-col border-r border-white/5">
+        <div class="p-10">
+            <h1 class="text-3xl font-black tracking-tighter text-yellow-500">TraceeSolar</h1>
+            <div class="mt-3 flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded text-[9px] font-black bg-white/10 text-slate-400 uppercase tracking-widest border border-white/5">Internal</span>
+                <span class="px-2 py-0.5 rounded text-[9px] font-black bg-yellow-500/10 text-yellow-500 uppercase tracking-widest border border-yellow-500/10">Secure</span>
+            </div>
         </div>
-        <nav class="mt-4">
-            <a href="#overview" class="sidebar-link flex items-center px-6 py-3 transition-colors active-link">
-                <i class="fas fa-chart-line w-5 mr-3"></i> Overview
+        <nav class="flex-1 px-4 space-y-1">
+            <a href="#overview" class="sidebar-link flex items-center px-6 py-3.5 rounded-xl transition-all active-link">
+                <i class="fas fa-layer-group w-8 opacity-70"></i> Overview
             </a>
-            <a href="#discovery" class="sidebar-link flex items-center px-6 py-3 transition-colors">
-                <i class="fas fa-search w-5 mr-3"></i> Discovery
+            <a href="#discovery" class="sidebar-link flex items-center px-6 py-3.5 rounded-xl transition-all text-slate-400 hover:text-white">
+                <i class="fas fa-search-plus w-8 opacity-70"></i> Discovery
             </a>
-            <a href="#architecture" class="sidebar-link flex items-center px-6 py-3 transition-colors">
-                <i class="fas fa-microchip w-5 mr-3"></i> Architecture
+            <a href="#architecture" class="sidebar-link flex items-center px-6 py-3.5 rounded-xl transition-all text-slate-400 hover:text-white">
+                <i class="fas fa-bolt w-8 opacity-70"></i> Architecture
             </a>
-            <a href="#distribution" class="sidebar-link flex items-center px-6 py-3 transition-colors">
-                <i class="fas fa-network-wired w-5 mr-3"></i> Distribution
+            <a href="#distribution" class="sidebar-link flex items-center px-6 py-3.5 rounded-xl transition-all text-slate-400 hover:text-white">
+                <i class="fas fa-network-wired w-8 opacity-70"></i> Distribution
             </a>
-            <a href="#productive-use" class="sidebar-link flex items-center px-6 py-3 transition-colors">
-                <i class="fas fa-industry w-5 mr-3"></i> Productive Use
+            <a href="#productive-use" class="sidebar-link flex items-center px-6 py-3.5 rounded-xl transition-all text-slate-400 hover:text-white">
+                <i class="fas fa-industry w-8 opacity-70"></i> Productive Use
             </a>
-            <a href="#financials" class="sidebar-link flex items-center px-6 py-3 transition-colors">
-                <i class="fas fa-money-bill-trend-up w-5 mr-3"></i> Financial Model
+            <a href="#financials" class="sidebar-link flex items-center px-6 py-3.5 rounded-xl transition-all text-slate-400 hover:text-white">
+                <i class="fas fa-chart-line w-8 opacity-70"></i> Financials
             </a>
-            <a href="#regulatory" class="sidebar-link flex items-center px-6 py-3 transition-colors">
-                <i class="fas fa-file-contract w-5 mr-3"></i> Regulatory
+            <a href="#regulatory" class="sidebar-link flex items-center px-6 py-3.5 rounded-xl transition-all text-slate-400 hover:text-white">
+                <i class="fas fa-shield-halved w-8 opacity-70"></i> Regulatory
             </a>
-            <a href="#community" class="sidebar-link flex items-center px-6 py-3 transition-colors">
-                <i class="fas fa-handshake w-5 mr-3"></i> Community
-            </a>
-            <a href="#calculator" class="sidebar-link flex items-center px-6 py-3 transition-colors mt-8 text-yellow-500 font-bold">
-                <i class="fas fa-calculator w-5 mr-3"></i> Savings Calculator
+            
+            <div class="pt-10 pb-4 px-6 text-[10px] font-black text-slate-600 uppercase tracking-[0.3em]">Tools</div>
+            <a href="#calculator" class="sidebar-link flex items-center px-6 py-4 rounded-2xl bg-yellow-500/5 text-yellow-500 border border-yellow-500/10 hover:bg-yellow-500 hover:text-slate-900 transition-all group">
+                <i class="fas fa-calculator w-8"></i> Modeling Engine
             </a>
         </nav>
-        <div class="absolute bottom-0 w-full p-6 bg-slate-800">
-            <p class="text-sm text-slate-400">Technical Strategy Draft</p>
-            <p class="text-xs text-slate-500 mt-1 italic">Technical Site Audit Pending</p>
+        <div class="p-8 bg-black/40">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-xs">IDG</div>
+                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-none">Draft Strategy<br><span class="text-slate-600 mt-1 block">Feb 2026</span></div>
+            </div>
         </div>
     </aside>
 
     <!-- Main Content -->
-    <main class="md:ml-64 p-4 md:p-8 lg:p-12 pt-20 md:pt-0">
+    <main class="lg:ml-72 p-2 md:p-8 lg:p-12 pt-20 lg:pt-0">
 
-        <!-- Header -->
-        <header id="overview" class="mb-12">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Solar Mini-Grid Meeting Prep</h2>
-                    <p class="text-slate-500 mt-2 text-sm md:text-base">Nigeria Rural Utility Infrastructure Development Strategy</p>
-                </div>
-                <div class="flex gap-2 flex-wrap">
-                    <span class="px-3 py-1.5 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full border border-yellow-200 uppercase tracking-tighter whitespace-nowrap">Internal Strategy</span>
-                    <span class="px-3 py-1.5 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full border border-emerald-200 uppercase tracking-tighter whitespace-nowrap">Confidential</span>
-                </div>
-            </div>
-
-            <!-- Stats Bar (Editable) -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mt-8">
-                <div class="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200 card group">
-                    <p class="text-slate-500 text-xs md:text-sm font-semibold uppercase tracking-wider flex justify-between">PV Capacity <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
-                    <h3 contenteditable="true" class="text-lg md:text-2xl font-bold mt-1 text-yellow-600 outline-none focus:bg-yellow-50 px-1 rounded">150 kWp</h3>
-                    <p class="text-xs text-slate-400 mt-2">Monocrystalline Tier-1</p>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200 card group">
-                    <p class="text-slate-500 text-xs md:text-sm font-semibold uppercase tracking-wider flex justify-between">Battery Storage <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
-                    <h3 contenteditable="true" class="text-lg md:text-2xl font-bold mt-1 text-emerald-600 outline-none focus:bg-emerald-50 px-1 rounded">480 kWh</h3>
-                    <p class="text-xs text-slate-400 mt-2">LiFePO4 Industrial Grade</p>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200 card group">
-                    <p class="text-slate-500 text-xs md:text-sm font-semibold uppercase tracking-wider flex justify-between">Fuel Disp. <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
-                    <h3 contenteditable="true" class="text-lg md:text-2xl font-bold mt-1 text-blue-600 outline-none focus:bg-blue-50 px-1 rounded">92%</h3>
-                    <p class="text-xs text-slate-400 mt-2">Target Uptime</p>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200 card group">
-                    <p class="text-slate-500 text-xs md:text-sm font-semibold uppercase tracking-wider flex justify-between">ROI Period <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
-                    <h3 contenteditable="true" class="text-lg md:text-2xl font-bold mt-1 text-purple-600 outline-none focus:bg-purple-50 px-1 rounded">5.2 Years</h3>
-                    <p class="text-xs text-slate-400 mt-2">Estimated Payback</p>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200 card group">
-                    <p class="text-slate-500 text-xs md:text-sm font-semibold uppercase tracking-wider flex justify-between">CO2 Offset <i class="fas fa-edit text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i></p>
-                    <h3 contenteditable="true" class="text-lg md:text-2xl font-bold mt-1 text-teal-600 outline-none focus:bg-teal-50 px-1 rounded">185 Tons</h3>
-                    <p class="text-xs text-slate-400 mt-2">Annual PR Impact</p>
-                </div>
-            </div>
-        </header>
-
-        <!-- Roadmap -->
-        <section id="roadmap" class="mb-12 pt-8">
-            <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic flex-shrink-0">01</span>
-                Roadmap to Power On
-            </h2>
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8 mb-8">
-                <div class="lg:col-span-3 bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 overflow-x-auto">
-                    <div class="relative flex flex-row md:flex-row justify-start md:justify-between items-start md:items-center gap-6 md:gap-4 min-w-[600px] md:min-w-0">
-                        <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 hidden md:block -translate-y-1/2 z-0"></div>
-
-                        <!-- Step 1 -->
-                        <div class="relative z-10 flex flex-col items-center text-center max-w-[100px] md:max-w-[120px]">
-                            <div class="w-10 h-10 rounded-full bg-yellow-500 text-slate-900 flex items-center justify-center font-bold mb-3 shadow-lg flex-shrink-0">1</div>
-                            <p class="text-xs font-bold text-slate-900">Load Audit</p>
-                            <p class="text-[10px] text-slate-500 mt-1 italic">48 Hours (Now)</p>
-                        </div>
-
-                        <!-- Step 2 -->
-                        <div class="relative z-10 flex flex-col items-center text-center max-w-[100px] md:max-w-[120px]">
-                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold mb-3 border border-slate-200 flex-shrink-0">2</div>
-                            <p class="text-xs font-bold text-slate-400">Final Sizing</p>
-                            <p class="text-[10px] text-slate-400 mt-1 italic">1 Week</p>
-                        </div>
-
-                        <!-- Step 3 -->
-                        <div class="relative z-10 flex flex-col items-center text-center max-w-[100px] md:max-w-[120px]">
-                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold mb-3 border border-slate-200 flex-shrink-0">3</div>
-                            <p class="text-xs font-bold text-slate-400">Procurement</p>
-                            <p class="text-[10px] text-slate-400 mt-1 italic">4-6 Weeks</p>
-                        </div>
-
-                        <!-- Step 4 -->
-                        <div class="relative z-10 flex flex-col items-center text-center max-w-[100px] md:max-w-[120px]">
-                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold mb-3 border border-slate-200 flex-shrink-0">4</div>
-                            <p class="text-xs font-bold text-slate-400">Civil Works</p>
-                            <p class="text-[10px] text-slate-400 mt-1 italic">2 Weeks</p>
-                        </div>
-
-                        <!-- Step 5 -->
-                        <div class="relative z-10 flex flex-col items-center text-center max-w-[100px] md:max-w-[120px]">
-                            <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold mb-3 shadow-lg flex-shrink-0"><i class="fas fa-check"></i></div>
-                            <p class="text-xs font-bold text-emerald-600">Power On</p>
-                            <p class="text-[10px] text-emerald-500 mt-1 italic">Commissioning</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-blue-900 p-6 rounded-2xl text-white shadow-xl flex flex-col justify-center">
-                    <h4 class="font-bold text-blue-300 uppercase tracking-widest text-[10px] mb-2">Estimated Footprint</h4>
-                    <p class="text-2xl font-bold mb-1">~1,800 m²</p>
-                    <p class="text-xs text-blue-200 italic leading-tight">Requires approximately 3-4 standard plots of secured land.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Grid Comparison -->
-        <section id="grid-comparison" class="mb-12 pt-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-sm">
-                    <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center text-base">
-                        <i class="fas fa-balance-scale text-yellow-500 mr-3"></i>
-                        Mini-Grid vs. National Grid (DisCo)
-                    </h2>
+        <!-- Top Navigation / Hero Header -->
+        <div id="overview" class="p-4 md:p-12 lg:p-16 pb-0 md:pb-0 lg:pb-0 pt-4 lg:pt-16">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
                     <div class="space-y-4">
-                        <div class="flex items-center justify-between p-3 bg-red-50 rounded-xl border border-red-100">
-                            <span class="font-bold text-red-900">National Grid Uptime</span>
-                            <span class="text-red-700 font-mono italic">30% - 60% Avg.</span>
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-[10px] font-black rounded-full border border-yellow-200 uppercase tracking-widest shadow-sm">Strategy Prep</span>
+                            <span class="px-3 py-1 bg-slate-900 text-white text-[10px] font-black rounded-full uppercase tracking-widest shadow-sm">IDG-Internal</span>
                         </div>
-                        <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-xl border border-emerald-100">
-                            <span class="font-bold text-emerald-900">Mini-Grid Uptime</span>
-                            <span class="text-emerald-700 font-mono font-bold">99.9% Target</span>
-                        </div>
-                        <p class="text-xs text-slate-500 mt-4 italic">"Even if the grid arrives, your Mini-Grid acts as a **Priority embedded generator**, protecting you from DisCo outages while selling excess power back."</p>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight">Solar Mini-Grid <span class="text-yellow-500 italic">Portfolio</span></h1>
+                        <p class="text-slate-500 text-lg md:text-xl font-medium max-w-2xl">Nigeria Rural Utility Infrastructure Development Strategy & Technical Feasibility Modeling.</p>
                     </div>
-                </div>
-                <div class="bg-slate-900 p-8 rounded-2xl text-white shadow-xl flex flex-col justify-center border-l-8 border-yellow-500">
-                    <h4 class="font-bold text-yellow-500 uppercase tracking-widest text-xs mb-4">NERC Protection Clause</h4>
-                    <p class="text-sm italic leading-relaxed">
-                        "Under the NERC Mini-Grid Regulation 2016, if the National Grid arrives, you are legally protected. The DisCo must either **Buy out your assets** at a depreciated replacement cost or **sign an interconnection agreement** where your system remains the primary source."
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Discovery -->
-        <section id="discovery" class="mb-12 pt-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">02</span>
-                Client Discovery & Data Capture
-            </h2>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-                <p class="text-slate-500 mb-6 font-medium">To ensure accurate sizing and bankability, we need to clarify the following:</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-start">
-                        <input type="checkbox" id="q1" class="checkbox-custom mt-1 mr-3 h-5 w-5 accent-yellow-500">
-                        <label for="q1" class="text-sm cursor-pointer"><strong>Current Load Profile:</strong> Peak demand timing (Residential: 7PM-10PM vs. Productive Use: 10AM-4PM).</label>
-                    </div>
-                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-start">
-                        <input type="checkbox" id="q2" class="checkbox-custom mt-1 mr-3 h-5 w-5 accent-yellow-500">
-                        <label for="q2" class="text-sm cursor-pointer"><strong>Fuel Budget:</strong> Monthly spend on diesel and generator maintenance overheads.</label>
-                    </div>
-                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-start">
-                        <input type="checkbox" id="q3" class="checkbox-custom mt-1 mr-3 h-5 w-5 accent-yellow-500">
-                        <label for="q3" class="text-sm cursor-pointer"><strong>Future Growth:</strong> Projected expansion for the facility/community in 3-5 years.</label>
-                    </div>
-                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-start">
-                        <input type="checkbox" id="q4" class="checkbox-custom mt-1 mr-3 h-5 w-5 accent-yellow-500">
-                        <label for="q4" class="text-sm cursor-pointer"><strong>Land Availability:</strong> Secured perimeter for the PV array and Power Hub.</label>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Architecture -->
-        <section id="architecture" class="mb-12 pt-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">03</span>
-                System Architecture
-            </h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex justify-center items-center overflow-x-auto">
-                    <img src="minigrid_diagram.svg" alt="Architecture Diagram" class="max-w-full h-auto">
-                </div>
-                <div class="space-y-6 text-sm">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card">
-                        <h4 class="font-bold text-slate-800 mb-2">Energy Flow Strategy</h4>
-                        <ul class="text-slate-600 space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-sun text-yellow-500 mt-1 mr-3"></i>
-                                <span><strong>Daytime:</strong> Direct PV supply to load + battery charging.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-moon text-blue-500 mt-1 mr-3"></i>
-                                <span><strong>Evening:</strong> Managed discharge covering residential peaks.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-plug text-red-500 mt-1 mr-3"></i>
-                                <span><strong>Backup:</strong> Seamless hybrid integration with existing gensets.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="bg-slate-900 p-6 rounded-2xl text-white shadow-xl">
-                        <p class="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-2">Technical Philosophy</p>
-                        <p class="text-xl font-bold italic font-serif leading-tight">"We build decentralized utilities, not just solar projects."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Distribution -->
-        <section id="distribution" class="mb-12 pt-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">04</span>
-                Distribution Layout
-            </h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex justify-center items-center overflow-x-auto">
-                    <img src="distribution_layout.svg" alt="Distribution Diagram" class="max-w-full h-auto">
-                </div>
-                <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 text-sm">
-                        <h4 class="font-bold text-slate-800 mb-4">Engineering Priority</h4>
-                        <div class="space-y-4">
-                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
-                                <h5 class="font-bold text-blue-900 text-xs uppercase">HV Transmission</h5>
-                                <p class="text-[11px] text-blue-700 mt-1 italic">Efficient transfer for distances > 1km using 11kV lines.</p>
-                            </div>
-                            <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-                                <h5 class="font-bold text-emerald-900 text-xs uppercase">Smart Metering</h5>
-                                <p class="text-[11px] text-emerald-700 mt-1 italic">STS prepaid meters ensuring 92%+ collection efficiency.</p>
-                            </div>
-                            <div class="bg-purple-50 p-4 rounded-xl border border-purple-100">
-                                <h5 class="font-bold text-purple-900 text-xs uppercase">Load Centers</h5>
-                                <p class="text-[11px] text-purple-700 mt-1 italic">Strategically placed transformers at consumer clusters.</p>
-                            </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center group cursor-help transition-all hover:border-yellow-500">
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 group-hover:text-yellow-600">Audit Status</span>
+                            <span class="text-sm font-bold text-slate-900 flex items-center gap-2"><i class="fas fa-clock text-yellow-500"></i> PENDING LOGGING</span>
                         </div>
                     </div>
-                    <div class="bg-slate-900 p-6 rounded-2xl text-white shadow-xl">
-                        <p class="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-2">Revenue Assurance</p>
-                        <p class="text-lg font-bold italic font-serif leading-tight">"Distribution is the backbone of ROI. We engineer for zero 'hidden' losses."</p>
+                </div>
+
+                <!-- Strategic Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 lg:gap-6 mt-12">
+                    <div class="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl card-premium group relative overflow-hidden">
+                        <div class="absolute -top-1 -right-1 md:top-4 md:right-6 text-slate-100/60 md:text-slate-100 group-hover:text-yellow-500/10 transition-colors">
+                            <i class="fas fa-sun text-3xl md:text-4xl"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 md:mb-2">PV Capacity</p>
+                            <h3 contenteditable="true" class="text-xl md:text-2xl font-black text-slate-900 group-hover:text-yellow-600 transition-colors outline-none">150 <span class="text-xs md:text-sm font-bold opacity-50 uppercase">kWp</span></h3>
+                            <p class="text-[9px] md:text-[10px] text-slate-500 mt-1 md:mt-2 font-bold italic">Monocrystalline Tier-1</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl card-premium group relative overflow-hidden">
+                        <div class="absolute -top-1 -right-1 md:top-4 md:right-6 text-slate-100/60 md:text-slate-100 group-hover:text-emerald-500/10 transition-colors">
+                            <i class="fas fa-battery-three-quarters text-3xl md:text-4xl"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 md:mb-2">Battery Storage</p>
+                            <h3 contenteditable="true" class="text-xl md:text-2xl font-black text-slate-900 group-hover:text-emerald-600 transition-colors outline-none">480 <span class="text-xs md:text-sm font-bold opacity-50 uppercase">kWh</span></h3>
+                            <p class="text-[9px] md:text-[10px] text-slate-500 mt-1 md:mt-2 font-bold italic">Industrial LiFePO4</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl card-premium group relative overflow-hidden">
+                        <div class="absolute -top-1 -right-1 md:top-4 md:right-6 text-slate-100/60 md:text-slate-100 group-hover:text-blue-500/10 transition-colors">
+                            <i class="fas fa-plug-circle-bolt text-3xl md:text-4xl"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 md:mb-2">Displacement</p>
+                            <h3 contenteditable="true" class="text-xl md:text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors outline-none">92<span class="text-xs md:text-sm font-bold opacity-50 uppercase">%</span></h3>
+                            <p class="text-[9px] md:text-[10px] text-slate-500 mt-1 md:mt-2 font-bold italic">Avg Target Uptime</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl card-premium group relative overflow-hidden">
+                        <div class="absolute -top-1 -right-1 md:top-4 md:right-6 text-slate-100/60 md:text-slate-100 group-hover:text-purple-500/10 transition-colors">
+                            <i class="fas fa-calendar-check text-3xl md:text-4xl"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 md:mb-2">ROI Period</p>
+                            <h3 contenteditable="true" class="text-xl md:text-2xl font-black text-slate-900 group-hover:text-purple-600 transition-colors outline-none">5.2 <span class="text-xs md:text-sm font-bold opacity-50 uppercase">Years</span></h3>
+                            <p class="text-[9px] md:text-[10px] text-slate-500 mt-1 md:mt-2 font-bold italic">Modeled Payback</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl card-premium group relative overflow-hidden hidden md:block">
+                        <div class="absolute -top-1 -right-1 md:top-4 md:right-6 text-slate-100/60 md:text-slate-100 group-hover:text-teal-500/10 transition-colors">
+                            <i class="fas fa-leaf text-3xl md:text-4xl"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 md:mb-2">ESG Impact</p>
+                            <h3 contenteditable="true" class="text-xl md:text-2xl font-black text-slate-900 group-hover:text-teal-600 transition-colors outline-none">185 <span class="text-xs md:text-sm font-bold opacity-50 uppercase">Tons</span></h3>
+                            <p class="text-[9px] md:text-[10px] text-slate-500 mt-1 md:mt-2 font-bold italic">Annual CO2 Offset</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Productive Use -->
-        <section id="productive-use" class="mb-12 pt-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">05</span>
-                Productive Use & Anchor Loads
-            </h2>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-sm">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                    <div>
-                        <h4 class="font-bold text-slate-800 mb-4 text-base">Load Curve Optimization Strategy</h4>
-                        <p class="text-slate-600 mb-6 leading-relaxed">To maximize project bankability, we prioritize <strong>Daytime Anchor Loads</strong> that synchronize with the solar generation peak. This active load management minimizes expensive battery cycling and converts potential energy curtailment into diversified revenue streams.</p>
+        <div class="p-4 md:p-12 lg:p-16 space-y-24 max-w-7xl mx-auto">
+
+            <!-- Roadmap Section -->
+            <section id="roadmap">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">01</div>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Implementation Roadmap</h2>
+                </div>
+                
+                <!-- Desktop: static layout -->
+                <div class="bg-white rounded-2xl md:rounded-[2rem] border border-slate-200 shadow-sm overflow-hidden p-1 hidden lg:block">
+                    <div class="p-12 flex justify-between items-center relative">
+                        <!-- Background line -->
+                        <div class="absolute top-[72px] left-[15%] right-[15%] h-[2px] bg-slate-100"></div>
+
+                        <div class="flex flex-col items-center text-center w-40 relative group">
+                            <div class="w-14 h-14 rounded-full bg-yellow-500 text-slate-900 flex items-center justify-center text-lg font-black mb-4 shadow-xl z-10 transition-transform group-hover:scale-110">1</div>
+                            <p class="text-sm font-black text-slate-900 uppercase tracking-tighter">Load Audit</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">48-Hour Assessment</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center w-40 relative group">
+                            <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-lg font-black mb-4 border-4 border-white shadow-sm z-10">2</div>
+                            <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Sizing</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">7-Day Analysis</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center w-40 relative group">
+                            <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-lg font-black mb-4 border-4 border-white shadow-sm z-10">3</div>
+                            <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Procurement</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">4-6 Week Supply</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center w-40 relative group">
+                            <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-lg font-black mb-4 border-4 border-white shadow-sm z-10">4</div>
+                            <p class="text-sm font-black text-slate-400 uppercase tracking-tighter">Construction</p>
+                            <p class="text-[10px] text-slate-400 mt-1 italic font-bold">2-Week Deployment</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center w-40 relative group">
+                            <div class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-lg font-black mb-4 shadow-lg z-10"><i class="fas fa-check"></i></div>
+                            <p class="text-sm font-black text-emerald-600 uppercase tracking-tighter">Power On</p>
+                            <p class="text-[10px] text-emerald-500 mt-1 italic font-bold">Commissioning</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile: continuous marquee -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden lg:hidden" id="roadmapMarquee">
+                    <div class="py-6 pb-10 overflow-hidden relative">
+                        <!-- Fade edges to indicate scrollability -->
+                        <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
+                        <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 group hover:border-yellow-200 transition-colors">
-                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3 text-blue-600">
-                                    <i class="fas fa-tower-broadcast"></i>
-                                </div>
-                                <p class="font-bold text-slate-800 text-xs uppercase">Telecom ESCO</p>
-                                <p class="text-[11px] text-slate-500 mt-1">24/7 mission-critical demand acting as a primary revenue floor.</p>
+                        <!-- Scroll hint - swipe indicator -->
+                        <div class="absolute bottom-1 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 text-[10px] text-slate-400 font-medium">
+                            <i class="fas fa-chevron-left text-xs"></i>
+                            <span>SWIPE</span>
+                            <i class="fas fa-chevron-right text-xs"></i>
+                        </div>
+
+                        <div class="roadmap-track flex gap-8 items-center px-6" id="roadmapTrack">
+                            <!-- Slide 1 -->
+                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
+                                <div class="w-12 h-12 rounded-full bg-yellow-500 text-slate-900 flex items-center justify-center text-base font-black mb-3 shadow-xl">1</div>
+                                <p class="text-xs font-black text-slate-900 uppercase tracking-tighter">Load Audit</p>
+                                <p class="text-[9px] text-slate-400 mt-0.5 italic font-bold">48-Hour Assessment</p>
                             </div>
-                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 group hover:border-emerald-200 transition-colors">
-                                <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center mb-3 text-emerald-600">
-                                    <i class="fas fa-faucet-drip"></i>
-                                </div>
-                                <p class="font-bold text-slate-800 text-xs uppercase">Agro-Irrigation</p>
-                                <p class="text-[11px] text-slate-500 mt-1">Automated pumping synchronized with peak solar irradiance (11AM - 3PM).</p>
+                            <div class="shrink-0 w-8 h-[2px] bg-slate-200 rounded-full"></div>
+                            <!-- Slide 2 -->
+                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-base font-black mb-3 border-3 border-white shadow-sm">2</div>
+                                <p class="text-xs font-black text-slate-400 uppercase tracking-tighter">Sizing</p>
+                                <p class="text-[9px] text-slate-400 mt-0.5 italic font-bold">7-Day Analysis</p>
                             </div>
-                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 group hover:border-purple-200 transition-colors">
-                                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3 text-purple-600">
-                                    <i class="fas fa-snowflake"></i>
-                                </div>
-                                <p class="font-bold text-slate-800 text-xs uppercase">Cold Storage</p>
-                                <p class="text-[11px] text-slate-500 mt-1">Monetizing daytime surplus for industrial agro-processing preservation.</p>
+                            <div class="shrink-0 w-8 h-[2px] bg-slate-200 rounded-full"></div>
+                            <!-- Slide 3 -->
+                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-base font-black mb-3 border-3 border-white shadow-sm">3</div>
+                                <p class="text-xs font-black text-slate-400 uppercase tracking-tighter">Procurement</p>
+                                <p class="text-[9px] text-slate-400 mt-0.5 italic font-bold">4-6 Wk Supply</p>
                             </div>
-                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 group hover:border-orange-200 transition-colors">
-                                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-3 text-orange-600">
-                                    <i class="fas fa-industry"></i>
-                                </div>
-                                <p class="font-bold text-slate-800 text-xs uppercase">Industrial Milling</p>
-                                <p class="text-[11px] text-slate-500 mt-1">High-torque processing loads managed via smart-sequencing protocols.</p>
+                            <div class="shrink-0 w-8 h-[2px] bg-slate-200 rounded-full"></div>
+                            <!-- Slide 4 -->
+                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-base font-black mb-3 border-3 border-white shadow-sm">4</div>
+                                <p class="text-xs font-black text-slate-400 uppercase tracking-tighter">Construction</p>
+                                <p class="text-[9px] text-slate-400 mt-0.5 italic font-bold">2-Wk Deploy</p>
+                            </div>
+                            <div class="shrink-0 w-8 h-[2px] bg-slate-200 rounded-full"></div>
+                            <!-- Slide 5 -->
+                            <div class="roadmap-stage flex flex-col items-center text-center shrink-0 w-32 scroll-snap-align-center">
+                                <div class="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center text-base font-black mb-3 shadow-lg"><i class="fas fa-check text-sm"></i></div>
+                                <p class="text-xs font-black text-emerald-600 uppercase tracking-tighter">Power On</p>
+                                <p class="text-[9px] text-emerald-500 mt-0.5 italic font-bold">Commission</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grid Comparison -->
+            <section id="grid-comparison">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-sm">
+                        <h2 class="text-base font-black text-slate-800 mb-6 flex items-center">
+                            <i class="fas fa-balance-scale text-yellow-500 mr-3"></i>
+                            Mini-Grid vs. National Grid (DisCo)
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-red-50 rounded-xl border border-red-100">
+                                <span class="font-bold text-red-900">National Grid Uptime</span>
+                                <span class="text-red-700 font-mono italic">30% - 60% Avg.</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+                                <span class="font-bold text-emerald-900">Mini-Grid Uptime</span>
+                                <span class="text-emerald-700 font-mono font-bold">99.9% Target</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-4 italic">"Even if the grid arrives, your Mini-Grid acts as a Priority embedded generator, protecting you from DisCo outages while selling excess power back."</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 p-8 rounded-2xl text-white shadow-xl flex flex-col justify-center border-l-8 border-yellow-500">
+                        <h4 class="font-black text-yellow-500 uppercase tracking-widest text-xs mb-4">Key Economic Advantage</h4>
+                        <p class="text-sm italic leading-relaxed">
+                            "Solar mini-grids eliminate volatile fuel costs entirely. With zero marginal fuel cost and <strong>predictable O&M</strong>, your energy spend becomes a fixed, bankable line item — unlocking superior financial planning."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Discovery Section -->
+            <section id="discovery">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">02</div>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Technical Discovery</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 bg-white p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] border border-slate-200 shadow-sm">
+                        <p class="text-slate-500 mb-6 md:mb-10 font-bold uppercase text-xs tracking-[0.2em]">Required Baseline Parameters</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                            <div class="group p-4 md:p-6 bg-slate-50 rounded-2xl md:rounded-3xl border border-slate-100 transition-all hover:border-yellow-200 hover:bg-white flex items-start gap-4">
+                                <input type="checkbox" id="q1" class="w-6 h-6 mt-1 rounded-lg border-2 border-slate-300 text-yellow-500 focus:ring-yellow-500 accent-yellow-500 cursor-pointer">
+                                <label for="q1" class="cursor-pointer">
+                                    <span class="block text-sm font-black text-slate-900 uppercase mb-1 tracking-tighter">Peak Profile</span>
+                                    <span class="block text-xs text-slate-500 leading-relaxed italic">Residential peaks (7-10PM) vs. Industrial baseline (10AM-4PM).</span>
+                                </label>
+                            </div>
+                            <div class="group p-4 md:p-6 bg-slate-50 rounded-2xl md:rounded-3xl border border-slate-100 transition-all hover:border-yellow-200 hover:bg-white flex items-start gap-4">
+                                <input type="checkbox" id="q2" class="w-6 h-6 mt-1 rounded-lg border-2 border-slate-300 text-yellow-500 focus:ring-yellow-500 accent-yellow-500 cursor-pointer">
+                                <label for="q2" class="cursor-pointer">
+                                    <span class="block text-sm font-black text-slate-900 uppercase mb-1 tracking-tighter">Fuel OPEX</span>
+                                    <span class="block text-xs text-slate-500 leading-relaxed italic">Monthly spend on diesel, logistics, and engine maintenance cycles.</span>
+                                </label>
+                            </div>
+                            <div class="group p-4 md:p-6 bg-slate-50 rounded-2xl md:rounded-3xl border border-slate-100 transition-all hover:border-yellow-200 hover:bg-white flex items-start gap-4">
+                                <input type="checkbox" id="q3" class="w-6 h-6 mt-1 rounded-lg border-2 border-slate-300 text-yellow-500 focus:ring-yellow-500 accent-yellow-500 cursor-pointer">
+                                <label for="q3" class="cursor-pointer">
+                                    <span class="block text-sm font-black text-slate-900 uppercase mb-1 tracking-tighter">Expansion Factor</span>
+                                    <span class="block text-xs text-slate-500 leading-relaxed italic">Anticipated facility load growth or community expansion within 5 years.</span>
+                                </label>
+                            </div>
+                            <div class="group p-4 md:p-6 bg-slate-50 rounded-2xl md:rounded-3xl border border-slate-100 transition-all hover:border-yellow-200 hover:bg-white flex items-start gap-4">
+                                <input type="checkbox" id="q4" class="w-6 h-6 mt-1 rounded-lg border-2 border-slate-300 text-yellow-500 focus:ring-yellow-500 accent-yellow-500 cursor-pointer">
+                                <label for="q4" class="cursor-pointer">
+                                    <span class="block text-sm font-black text-slate-900 uppercase mb-1 tracking-tighter">Secure Land</span>
+                                    <span class="block text-xs text-slate-500 leading-relaxed italic">Secured perimeter availability for PV array and Power Hub foundation.</span>
+                                </label>
                             </div>
                         </div>
                     </div>
                     
+                    <div class="bg-slate-900 p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] shadow-xl text-white relative overflow-hidden flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 p-8 opacity-10">
+                            <i class="fas fa-balance-scale text-8xl -rotate-12"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <h4 class="text-xl font-black text-yellow-500 uppercase tracking-widest mb-6">DisCo Protection</h4>
+                            <p class="text-slate-300 italic leading-relaxed text-sm">"Under NERC Mini-Grid Regulation 2016, if the National Grid arrives, asset owners are protected. DisCos must either buy out assets at depreciated replacement cost or sign a priority interconnection agreement."</p>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-white/10 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-yellow-500 text-slate-900 flex items-center justify-center font-black">L</div>
+                            <div class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 leading-none">Legal & Regulatory<br><span class="text-white mt-1 block">Security Clause</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Architecture Section -->
+            <section id="architecture">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">03</div>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">System Architecture</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                    <div class="lg:col-span-2 bg-white p-6 md:p-10 rounded-2xl md:rounded-[3rem] border border-slate-200 shadow-sm flex items-center justify-center group overflow-hidden">
+                        <img src="minigrid_diagram.svg" alt="Architecture Diagram" class="w-full max-w-2xl transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="space-y-8">
+                        <div class="bg-white p-5 md:p-8 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                            <h4 class="text-sm font-black text-slate-900 uppercase tracking-widest border-b pb-4">Flow Optimization</h4>
+                            <div class="space-y-6">
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 shrink-0"><i class="fas fa-sun"></i></div>
+                                    <p class="text-xs text-slate-600 leading-relaxed"><strong>Solar Generation:</strong> Direct consumption during irradiance peaks to maximize PV yield.</p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0"><i class="fas fa-moon"></i></div>
+                                    <p class="text-xs text-slate-600 leading-relaxed"><strong>Storage Management:</strong> Intelligent LiFePO4 discharge cycles covering critical night loads.</p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0"><i class="fas fa-shuffle"></i></div>
+                                    <p class="text-xs text-slate-600 leading-relaxed"><strong>Hybrid Sync:</strong> Seamless integration with existing backup diesel/gas generation.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 md:p-8 bg-emerald-600 rounded-2xl md:rounded-3xl text-white shadow-lg shadow-emerald-200 group overflow-hidden relative">
+                            <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform"></div>
+                            <p class="text-[10px] font-black uppercase tracking-widest opacity-70 mb-2">Technical Goal</p>
+                            <p class="text-xl font-bold italic leading-tight">"Engineered for 99.9% uptime using utility-grade Tier-1 components."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Distribution Section -->
+            <section id="distribution">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">04</div>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Network Layout</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                    <div class="lg:col-span-2 bg-white p-6 md:p-10 rounded-2xl md:rounded-[3rem] border border-slate-200 shadow-sm flex items-center justify-center order-last lg:order-first group overflow-hidden">
+                        <img src="distribution_layout.svg" alt="Distribution Diagram" class="w-full max-w-2xl transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
                     <div class="space-y-6">
-                        <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-2xl relative overflow-hidden">
-                            <div class="absolute -right-4 -bottom-4 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl"></div>
-                            <i class="fas fa-quote-right absolute top-6 right-8 text-slate-800 text-6xl opacity-30"></i>
-                            <h5 class="text-xl font-bold mb-4 text-yellow-500 tracking-tight">The "Anchor Load" Principle</h5>
-                            <p class="italic text-slate-300 leading-relaxed mb-8 text-base">
-                                "By securing commercial daytime consumers, we stabilize the project's debt-service coverage ratio (DSCR). This technical stability allows us to cross-subsidize residential energy access, significantly <strong>lowering social-impact tariffs</strong>."
-                            </p>
-                            <div class="flex items-center border-t border-slate-800 pt-6">
-                                <div class="w-12 h-12 rounded-xl bg-yellow-500 flex items-center justify-center mr-4 font-black text-slate-900 shadow-lg text-xs">STRAT</div>
-                                <div>
-                                    <p class="text-xs font-bold uppercase tracking-widest text-yellow-500">Internal Directive</p>
-                                    <p class="text-sm text-slate-400">Infrastructure Development Group</p>
+                        <div class="bg-slate-900 p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] shadow-xl text-white relative overflow-hidden">
+                            <h4 class="text-lg font-black text-yellow-500 uppercase tracking-widest mb-6">HV Distribution</h4>
+                            <ul class="space-y-6 text-sm">
+                                <li class="flex gap-4">
+                                    <span class="text-yellow-500 font-black">01.</span>
+                                    <p class="text-slate-300 italic leading-relaxed">High-voltage transmission (11kV) for efficient long-distance energy transfer (>1km).</p>
+                                </li>
+                                <li class="flex gap-4">
+                                    <span class="text-yellow-500 font-black">02.</span>
+                                    <p class="text-slate-300 italic leading-relaxed">Strategic transformer placement at consumer load clusters to reduce LV copper losses.</p>
+                                </li>
+                                <li class="flex gap-4">
+                                    <span class="text-yellow-500 font-black">03.</span>
+                                    <p class="text-slate-300 italic leading-relaxed">STS Smart Metering ensuring >92% revenue collection efficiency.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Productive Use Section -->
+            <section id="productive-use">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">05</div>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Productive Use & Anchor Loads</h2>
+                </div>
+                
+                <div class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl md:rounded-[3rem] border border-slate-200 shadow-sm">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-start">
+                        <div>
+                            <h4 class="text-lg md:text-xl font-black text-slate-900 uppercase tracking-tight mb-4 md:mb-6">Load Curve Optimization</h4>
+                            <p class="text-xs md:text-base text-slate-500 mb-8 md:mb-10 leading-relaxed">To maximize ROI, we prioritize <strong>Daytime Anchor Loads</strong> that match the PV generation curve. This strategy reduces battery depth-of-discharge (DoD) requirements and monetizes surplus energy that would otherwise be curtailed.</p>
+                            
+                            <div class="grid grid-cols-2 gap-3 md:gap-4">
+                                <div class="p-4 md:p-6 bg-slate-50 rounded-2xl md:rounded-3xl border border-slate-100 group hover:border-yellow-500/30 transition-all">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-blue-100 flex items-center justify-center mb-3 md:mb-4 text-blue-600 transition-transform group-hover:scale-110"><i class="fas fa-tower-broadcast text-lg"></i></div>
+                                    <p class="font-black text-slate-900 text-[10px] md:text-xs uppercase tracking-widest">Telecom ESCO</p>
+                                    <p class="text-[9px] md:text-[11px] text-slate-500 mt-1 md:mt-2 italic font-medium leading-relaxed">24/7 mission-critical demand acting as a primary revenue floor.</p>
+                                </div>
+                                <div class="p-4 md:p-6 bg-slate-50 rounded-2xl md:rounded-3xl border border-slate-100 group hover:border-emerald-500/30 transition-all">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-emerald-100 flex items-center justify-center mb-3 md:mb-4 text-emerald-600 transition-transform group-hover:scale-110"><i class="fas fa-faucet-drip text-lg"></i></div>
+                                    <p class="font-black text-slate-900 text-[10px] md:text-xs uppercase tracking-widest">Agro-Irrigation</p>
+                                    <p class="text-[9px] md:text-[11px] text-slate-500 mt-1 md:mt-2 italic font-medium leading-relaxed">Automated pumping synchronized with peak solar irradiance.</p>
+                                </div>
+                                <div class="p-4 md:p-6 bg-slate-50 rounded-2xl md:rounded-3xl border border-slate-100 group hover:border-purple-500/30 transition-all">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-purple-100 flex items-center justify-center mb-3 md:mb-4 text-purple-600 transition-transform group-hover:scale-110"><i class="fas fa-snowflake text-lg"></i></div>
+                                    <p class="font-black text-slate-900 text-[10px] md:text-xs uppercase tracking-widest">Cold Storage</p>
+                                    <p class="text-[9px] md:text-[11px] text-slate-500 mt-1 md:mt-2 italic font-medium leading-relaxed">Monetizing daytime surplus for industrial food preservation.</p>
+                                </div>
+                                <div class="p-4 md:p-6 bg-slate-50 rounded-2xl md:rounded-3xl border border-slate-100 group hover:border-orange-500/30 transition-all">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-orange-100 flex items-center justify-center mb-3 md:mb-4 text-orange-600 transition-transform group-hover:scale-110"><i class="fas fa-industry text-lg"></i></div>
+                                    <p class="font-black text-slate-900 text-[10px] md:text-xs uppercase tracking-widest">Ind. Milling</p>
+                                    <p class="text-[9px] md:text-[11px] text-slate-500 mt-1 md:mt-2 italic font-medium leading-relaxed">High-torque processing loads managed via smart sequencing.</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="p-6 bg-yellow-50 rounded-2xl border border-yellow-100">
-                            <h6 class="text-xs font-bold text-yellow-800 uppercase tracking-widest mb-2 flex items-center">
-                                <i class="fas fa-chart-line mr-2"></i> Bankability Benchmark
-                            </h6>
-                            <p class="text-sm text-yellow-900 leading-relaxed font-medium">
-                                Projects targeting institutional capital should aim for >45% Productive Use contribution to total energy sales to ensure long-term macro-economic resilience.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Financial Model -->
-        <section id="financials" class="mb-12 pt-8 text-sm">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center text-base">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">06</span>
-                Financial Model & Business Case
-            </h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="space-y-8">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                        <h4 class="font-bold text-slate-800 mb-4">CAPEX Composition</h4>
-                        <div class="flex justify-center">
-                            <img src="capex_composition.svg" alt="CAPEX Chart" class="max-w-full h-auto">
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                        <h4 class="font-bold text-slate-800 mb-4">Economic Superiority</h4>
-                        <table class="w-full text-xs">
-                            <thead class="bg-slate-50 border-b border-slate-200">
-                                <tr>
-                                    <th class="px-4 py-3 text-left">Factor</th>
-                                    <th class="px-4 py-3 text-left">Diesel Gen</th>
-                                    <th class="px-4 py-3 text-left text-yellow-600">Solar Mini-Grid</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <tr>
-                                    <td class="px-4 py-3 font-bold">Fuel Cost</td>
-                                    <td class="px-4 py-3 text-slate-500">₦1,200+ / L</td>
-                                    <td class="px-4 py-3 font-bold text-emerald-600">₦0 (Free Sun)</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-3 font-bold">Real Cost/kWh</td>
-                                    <td class="px-4 py-3 text-slate-500">≈ ₦415</td>
-                                    <td class="px-4 py-3 font-bold text-blue-600">≈ ₦240</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-3 font-bold">Maintenance</td>
-                                    <td class="px-4 py-3 text-red-500">Monthly engine overhaul</td>
-                                    <td class="px-4 py-3 font-bold text-slate-900">2% CAPEX / Year</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="space-y-8">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                        <h4 class="font-bold text-slate-800 mb-4">Capital Structure</h4>
-                        <div class="flex justify-center">
-                            <img src="capital_structure.svg" alt="Capital Chart" class="max-w-full h-auto">
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                        <h4 class="font-bold text-slate-800 mb-4 text-base">Revenue Waterfall</h4>
-                        <ol class="space-y-4">
-                            <li class="flex items-center p-3 bg-slate-50 rounded-xl">
-                                <span class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold mr-3">1</span>
-                                <span class="flex-grow">Operations & Maintenance (O&M)</span>
-                                <span class="text-xs text-slate-400 font-mono italic">Tier-1 Priority</span>
-                            </li>
-                            <li class="flex items-center p-3 bg-slate-50 rounded-xl">
-                                <span class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold mr-3">2</span>
-                                <span class="flex-grow">Debt Service (P+I)</span>
-                            </li>
-                            <li class="flex items-center p-3 bg-slate-50 rounded-xl">
-                                <span class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold mr-3">3</span>
-                                <span class="flex-grow">Battery Reserve Fund</span>
-                            </li>
-                            <li class="flex items-center p-3 bg-yellow-50 rounded-xl border border-yellow-100">
-                                <span class="w-6 h-6 rounded-full bg-yellow-500 text-white flex items-center justify-center text-[10px] font-bold mr-3">4</span>
-                                <span class="flex-grow font-bold text-yellow-900">Equity Returns (Dividends)</span>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Savings Calculator -->
-        <section id="calculator" class="mb-12 pt-8 bg-slate-900 rounded-3xl md:rounded-[2.5rem] p-6 md:p-12 text-white shadow-2xl">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Interactive Savings Calculator</h2>
-                    <p class="text-slate-400 mb-8 italic text-sm">Adjust parameters live during the meeting to show immediate ROI for different fuel baselines.</p>
-
-                    <div class="space-y-6 md:space-y-8">
-                        <!-- Fuel Type Selector -->
-                        <div>
-                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Select Current Fuel Baseline:</p>
-                            <div class="flex flex-wrap gap-2 p-1 bg-slate-800 rounded-xl border border-slate-700 shadow-inner">
-                                <button onclick="setFuel('diesel')" id="btn-diesel" class="flex-1 min-w-[80px] px-4 py-3 rounded-lg text-xs font-black transition-all bg-yellow-500 text-slate-900 shadow-lg touch-target">DIESEL</button>
-                                <button onclick="setFuel('petrol')" id="btn-petrol" class="flex-1 min-w-[80px] px-4 py-3 rounded-lg text-xs font-black transition-all hover:bg-slate-700 text-slate-400 touch-target">PETROL</button>
-                                <button onclick="setFuel('gas')" id="btn-gas" class="flex-1 min-w-[80px] px-4 py-3 rounded-lg text-xs font-black transition-all hover:bg-slate-700 text-slate-400 touch-target">GAS</button>
+                        <div class="space-y-8">
+                            <div class="bg-slate-900 text-white p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
+                                <div class="absolute -right-4 -bottom-4 w-40 h-40 bg-yellow-500/10 rounded-full blur-[80px]"></div>
+                                <i class="fas fa-quote-right absolute top-8 right-10 text-slate-800 text-7xl opacity-30"></i>
+                                <h5 class="text-xl font-black text-yellow-500 uppercase tracking-widest mb-6">Anchor Principle</h5>
+                                <p class="text-lg italic text-slate-300 leading-relaxed mb-10">
+                                    "Commercial daytime consumers stabilize project debt-service (DSCR), allowing for significantly <strong>lower cross-subsidized tariffs</strong> for residential households."
+                                </p>
+                                <div class="flex items-center gap-4 border-t border-white/5 pt-8">
+                                    <div class="w-12 h-12 rounded-2xl bg-yellow-500 flex items-center justify-center text-slate-900 font-black text-xs">IDG</div>
+                                    <div class="text-[10px] font-black uppercase tracking-widest text-slate-500 leading-none">Internal Strategy Note<br><span class="text-white mt-1 block">Infrastructure Development Group</span></div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div>
-                            <label id="quantityLabel" class="block text-sm font-bold text-slate-300 mb-2 uppercase tracking-wide">Daily Fuel Consumption (Litres)</label>
-                            <input type="range" id="fuelQuantity" min="0" max="500" value="150" class="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-yellow-500 touch-target">
-                            <div class="flex justify-between text-xs mt-2 text-slate-500">
-                                <span>0</span>
-                                <span id="quantityVal" class="text-yellow-500 font-bold text-base">150 L</span>
-                                <span>500</span>
-                            </div>
-                        </div>
-                        <div>
-                            <label id="priceLabel" class="block text-sm font-bold text-slate-300 mb-2 uppercase tracking-wide">Price per Unit (₦)</label>
-                            <input type="range" id="fuelPrice" min="500" max="1500" value="1200" class="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-yellow-500 touch-target">
-                            <div class="flex justify-between text-xs mt-2 text-slate-500">
-                                <span id="minPrice">₦500</span>
-                                <span id="priceVal" class="text-yellow-500 font-bold text-base">₦1,200</span>
-                                <span id="maxPrice">₦1,500</span>
+                            
+                            <div class="p-5 md:p-8 bg-yellow-50 rounded-2xl md:rounded-[2rem] border border-yellow-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute top-0 right-0 p-4 opacity-10"><i class="fas fa-lightbulb text-4xl text-yellow-600"></i></div>
+                                <h6 class="text-xs font-black text-yellow-800 uppercase tracking-[0.2em] mb-3">Bankability Insight</h6>
+                                <p class="text-sm text-yellow-900 leading-relaxed font-semibold italic">
+                                    Projects with >45% Productive Use contribution typically receive preferential debt-to-equity terms from DFI lenders due to predictable revenue.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-slate-800 p-6 md:p-8 rounded-3xl border border-slate-700 flex flex-col justify-center">
-                    <p class="text-slate-400 text-sm uppercase tracking-widest font-bold mb-2">Monthly Operational Spend</p>
-                    <h3 id="currentSpend" class="text-3xl md:text-4xl font-mono font-bold text-red-500 mb-6 tracking-tighter">₦5,400,000</h3>
+            </section>
 
-                    <div class="pt-6 border-t border-slate-700">
-                        <p class="text-emerald-400 text-sm uppercase tracking-widest font-bold mb-2">Solar Monthly Saving (85% Displacement)</p>
-                        <h3 id="savings" class="text-4xl md:text-5xl font-mono font-bold text-emerald-500 tracking-tighter">₦4,590,000</h3>
-                        <p class="text-slate-500 text-xs mt-4 uppercase tracking-widest">Annual Projected Savings</p>
-                        <h4 id="annualSavings" class="text-xl md:text-2xl font-mono text-slate-300 font-bold tracking-tight">₦55,080,000</h4>
-                    </div>
+            <!-- Financial Model Section -->
+            <section id="financials">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">06</div>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Economic Case</h2>
                 </div>
-            </div>
-        </section>
-
-        <!-- Regulatory -->
-        <section id="regulatory" class="mb-12 pt-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">07</span>
-                Regulatory Framework
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 text-sm">
-                    <h4 class="font-bold text-slate-800 mb-4 italic underline decoration-yellow-500 underline-offset-4">NERC Compliance Pathway</h4>
-                    <div class="space-y-4 text-slate-600">
-                        <div class="flex items-start">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center mr-3 flex-shrink-0 text-slate-900 font-bold">1</div>
-                            <p><strong>Isolated Permit:</strong> Adherence to the **NERC Mini-Grid Regulation 2016** for systems <1MW.</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center mr-3 flex-shrink-0 text-slate-900 font-bold">2</div>
-                            <p><strong>Grid Arrival Scenarios:</strong> Pre-negotiated interconnection or asset buyout protection per regulator formula.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                    <h4 class="font-bold text-slate-800 mb-4 italic underline decoration-red-500 underline-offset-4">Risk & Mitigation</h4>
-                    <div class="space-y-3">
-                        <div class="p-3 bg-orange-50 rounded-xl border border-orange-100 flex justify-between items-center">
-                            <div>
-                                <p class="text-xs font-bold text-orange-900 uppercase">Harmattan Dust</p>
-                                <p class="text-[10px] text-orange-700 italic">Automated cleaning + Oversized PV Array (30% Margin)</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+                    <div class="bg-white p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border border-slate-200 shadow-sm space-y-8 md:space-y-10">
+                        <div class="space-y-4">
+                            <h4 class="text-xs md:text-sm font-black text-slate-900 uppercase tracking-widest border-b pb-4 flex justify-between items-center">
+                                CAPEX Composition <i class="fas fa-chart-pie text-slate-200"></i>
+                            </h4>
+                            <div class="flex justify-center p-2 md:p-4">
+                                <img src="capex_composition.svg" alt="CAPEX Chart" class="w-full max-w-[280px] md:max-w-sm">
                             </div>
-                            <i class="fas fa-wind text-orange-500"></i>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center text-xs font-bold text-slate-700">
-                            <p class="uppercase">FX Volatility</p>
-                            <p class="text-[10px] text-slate-500 font-medium italic">USD-indexed equipment contracts</p>
+                        <div class="space-y-4">
+                            <h4 class="text-xs md:text-sm font-black text-slate-900 uppercase tracking-widest border-b pb-4 flex justify-between items-center">
+                                Superiority Matrix <i class="fas fa-table text-slate-200"></i>
+                            </h4>
+                            <div class="overflow-x-auto -mx-2 px-2">
+                                <div class="inline-block min-w-full align-middle">
+                                    <div class="overflow-hidden rounded-xl border border-slate-100">
+                                        <table class="min-w-full text-left text-sm">
+                                            <thead class="bg-slate-50 text-[9px] md:text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                                <tr>
+                                                    <th class="px-3 md:px-6 py-3 md:py-4">Metric</th>
+                                                    <th class="px-3 md:px-6 py-3 md:py-4">Diesel Baseline</th>
+                                                    <th class="px-3 md:px-6 py-3 md:py-4 text-yellow-600">Solar Utility</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-slate-100">
+                                                <tr class="group hover:bg-slate-50 transition-colors">
+                                                    <td class="px-3 md:px-6 py-3 md:py-4 font-bold text-slate-900 whitespace-nowrap">Fuel Cost</td>
+                                                    <td class="px-3 md:px-6 py-3 md:py-4 text-slate-500 whitespace-nowrap">₦1,200+ / L</td>
+                                                    <td class="px-3 md:px-6 py-3 md:py-4 font-black text-emerald-600 italic whitespace-nowrap">₦0.00</td>
+                                                </tr>
+                                                <tr class="group hover:bg-slate-50 transition-colors">
+                                                    <td class="px-3 md:px-6 py-3 md:py-4 font-bold text-slate-900 whitespace-nowrap">LCOE / kWh</td>
+                                                    <td class="px-3 md:px-6 py-3 md:py-4 text-slate-500 whitespace-nowrap">≈ ₦415.00</td>
+                                                    <td class="px-3 md:px-6 py-3 md:py-4 font-black text-blue-600 italic whitespace-nowrap">≈ ₦240.00</td>
+                                                </tr>
+                                                <tr class="group hover:bg-slate-50 transition-colors">
+                                                    <td class="px-3 md:px-6 py-3 md:py-4 font-bold text-slate-900 whitespace-nowrap">Maint. Cycle</td>
+                                                    <td class="px-3 md:px-6 py-3 md:py-4 text-red-500 leading-tight">Monthly overhaul</td>
+                                                    <td class="px-3 md:px-6 py-3 md:py-4 font-bold text-slate-900 italic whitespace-nowrap">2% / Year</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center text-xs font-bold text-slate-700">
-                            <p class="uppercase">Theft/Vandalism</p>
-                            <p class="text-[10px] text-slate-500 font-medium italic">Community Stakeholder Security</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border border-slate-200 shadow-sm space-y-8 md:space-y-10">
+                        <div class="space-y-4">
+                            <h4 class="text-xs md:text-sm font-black text-slate-900 uppercase tracking-widest border-b pb-4 flex justify-between items-center">
+                                Capital Structure <i class="fas fa-building-columns text-slate-200"></i>
+                            </h4>
+                            <div class="flex justify-center p-2 md:p-4">
+                                <img src="capital_structure.svg" alt="Capital Chart" class="w-full max-w-[280px] md:max-w-sm">
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="text-xs md:text-sm font-black text-slate-900 uppercase tracking-widest border-b pb-4 flex justify-between items-center">
+                                Revenue Waterfall <i class="fas fa-water text-slate-200"></i>
+                            </h4>
+                            <div class="space-y-2 md:space-y-3">
+                                <div class="flex items-center p-3 md:p-4 bg-slate-50 rounded-xl md:rounded-2xl border border-slate-100 group transition-all hover:bg-slate-900 hover:text-white">
+                                    <span class="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-[10px] font-black mr-3 md:mr-4 group-hover:bg-yellow-500 group-hover:text-slate-900 transition-colors">01</span>
+                                    <span class="flex-grow font-bold text-xs md:text-sm uppercase tracking-tight">O&M Obligations</span>
+                                    <span class="text-[9px] font-black opacity-40 group-hover:opacity-70 hidden sm:inline">Tier-1 Priority</span>
+                                </div>
+                                <div class="flex items-center p-3 md:p-4 bg-slate-50 rounded-xl md:rounded-2xl border border-slate-100 group transition-all hover:bg-slate-900 hover:text-white">
+                                    <span class="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-[10px] font-black mr-3 md:mr-4 group-hover:bg-yellow-500 group-hover:text-slate-900 transition-colors">02</span>
+                                    <span class="flex-grow font-bold text-xs md:text-sm uppercase tracking-tight">Debt Service (P+I)</span>
+                                </div>
+                                <div class="flex items-center p-3 md:p-4 bg-slate-50 rounded-xl md:rounded-2xl border border-slate-100 group transition-all hover:bg-slate-900 hover:text-white">
+                                    <span class="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-[10px] font-black mr-3 md:mr-4 group-hover:bg-yellow-500 group-hover:text-slate-900 transition-colors">03</span>
+                                    <span class="flex-grow font-bold text-xs md:text-sm uppercase tracking-tight">Battery Reserve</span>
+                                </div>
+                                <div class="flex items-center p-3 md:p-4 bg-yellow-500/10 rounded-xl md:rounded-2xl border border-yellow-500/20 group transition-all hover:bg-yellow-500 hover:text-slate-900">
+                                    <span class="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-yellow-500 text-slate-900 flex items-center justify-center text-[10px] font-black mr-3 md:mr-4 group-hover:bg-slate-900 group-hover:text-white transition-colors">04</span>
+                                    <span class="flex-grow font-black text-xs md:text-sm uppercase tracking-tight">Equity Distributions</span>
+                                    <i class="fas fa-star text-yellow-600 group-hover:text-slate-900 transition-colors"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Community -->
-        <section id="community" class="mb-12 pt-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center text-base">
-                <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm italic">08</span>
-                Community Engagement
-            </h2>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                    <div class="p-6 bg-slate-50 rounded-2xl">
-                        <i class="fas fa-bullhorn text-yellow-500 text-2xl mb-4"></i>
-                        <h5 class="font-bold text-sm mb-2">Town Hall Consultations</h5>
-                        <p class="text-xs text-slate-500">Transparency on tariffs and local benefits.</p>
+            <!-- Savings Calculator -->
+            <section id="calculator">
+                <div class="bg-slate-900 rounded-2xl md:rounded-[3.5rem] overflow-hidden shadow-2xl border border-white/5 relative min-h-[100dvh] lg:min-h-0 flex flex-col">
+                <!-- Background Decorative Elements -->
+                <div class="absolute top-0 left-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+
+                <div class="relative p-5 pt-7 md:p-16 lg:p-20 flex-1 flex flex-col">
+
+                    <!-- Header -->
+                    <div class="mb-5 md:mb-8 lg:mb-0">
+                        <span class="inline-block px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mb-2 md:mb-4">Live Modeling</span>
+                        <h2 class="text-xl md:text-4xl font-black text-white leading-tight">OPEX Displacement <span class="text-yellow-500 italic">Calculator</span></h2>
+                        <p class="text-slate-400 mt-2 md:mt-4 text-xs md:text-base leading-relaxed max-w-lg hidden md:block">Adjust operational variables to visualize the impact of transitioning from fossil fuels to solar infrastructure.</p>
                     </div>
-                    <div class="p-6 bg-slate-50 rounded-2xl">
-                        <i class="fas fa-tools text-emerald-500 text-2xl mb-4"></i>
-                        <h5 class="font-bold text-sm mb-2">Local Employment</h5>
-                        <p class="text-xs text-slate-500">Hiring community members for O&M and Security.</p>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-2xl">
-                        <i class="fas fa-balance-scale text-blue-500 text-2xl mb-4"></i>
-                        <h5 class="font-bold text-sm mb-2">Stakeholder Buy-in</h5>
-                        <p class="text-xs text-slate-500">Engaging traditional leadership for social license.</p>
+
+                    <div class="flex flex-col lg:flex-row gap-5 lg:gap-20 items-stretch flex-1">
+
+                        <!-- Inputs Column -->
+                        <div class="flex-1 flex flex-col gap-5 md:gap-10 justify-center">
+
+                            <!-- Fuel Selector -->
+                            <div class="space-y-2 md:space-y-4">
+                                <label class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest block">Baseline Energy Source</label>
+                                <div class="grid grid-cols-3 gap-2 md:gap-3 p-1.5 bg-white/5 rounded-xl md:rounded-2xl border border-white/10 backdrop-blur-sm">
+                                    <button onclick="setFuel('diesel')" id="btn-diesel" class="py-3 md:py-3.5 rounded-lg md:rounded-xl text-xs font-black transition-all bg-yellow-500 text-slate-900 shadow-[0_0_20px_rgba(245,158,11,0.3)]">DIESEL</button>
+                                    <button onclick="setFuel('petrol')" id="btn-petrol" class="py-3 md:py-3.5 rounded-lg md:rounded-xl text-xs font-black transition-all hover:bg-white/5 text-slate-400">PETROL</button>
+                                    <button onclick="setFuel('gas')" id="btn-gas" class="py-3 md:py-3.5 rounded-lg md:rounded-xl text-xs font-black transition-all hover:bg-white/5 text-slate-400">GAS</button>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Sliders -->
+                            <div class="space-y-5 md:space-y-12">
+                                <div class="space-y-3 md:space-y-6">
+                                    <div class="flex justify-between items-center">
+                                        <label id="quantityLabel" class="text-[11px] md:text-sm font-bold text-slate-200 uppercase tracking-wide">Daily Volume</label>
+                                        <div class="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 rounded-lg border border-white/10">
+                                            <span id="quantityVal" class="text-base md:text-xl font-mono font-bold text-yellow-500">150 L</span>
+                                        </div>
+                                    </div>
+                                    <div class="relative flex items-center group py-1">
+                                        <input type="range" id="fuelQuantity" min="0" max="500" value="150" class="w-full h-2 md:h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-yellow-500 group-hover:accent-yellow-400 transition-all">
+                                    </div>
+                                    <div class="flex justify-between text-[10px] text-slate-500 font-black uppercase tracking-widest px-1">
+                                        <span>0 Units</span>
+                                        <span>500 Units</span>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-3 md:space-y-6">
+                                    <div class="flex justify-between items-center">
+                                        <label id="priceLabel" class="text-[11px] md:text-sm font-bold text-slate-200 uppercase tracking-wide">Unit Cost (₦)</label>
+                                        <div class="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 rounded-lg border border-white/10">
+                                            <span id="priceVal" class="text-base md:text-xl font-mono font-bold text-yellow-500">₦1,200</span>
+                                        </div>
+                                    </div>
+                                    <div class="relative flex items-center group py-1">
+                                        <input type="range" id="fuelPrice" min="500" max="1500" value="1200" class="w-full h-2 md:h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-yellow-500 group-hover:accent-yellow-400 transition-all">
+                                    </div>
+                                    <div class="flex justify-between text-[10px] text-slate-500 font-black uppercase tracking-widest px-1">
+                                        <span id="minPrice">₦500</span>
+                                        <span id="maxPrice">₦1,500</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Results Card Column -->
+                        <div class="lg:w-[400px] flex flex-col gap-3 md:gap-6">
+                            <!-- Monthly OPEX Card -->
+                            <div class="p-4 md:p-8 rounded-2xl md:rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md relative overflow-hidden group">
+                                <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                    <i class="fas fa-fire-alt text-5xl md:text-7xl -rotate-12"></i>
+                                </div>
+                                <div class="relative z-10 flex items-center gap-4 md:block">
+                                    <div class="flex-1">
+                                        <p class="text-slate-500 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mb-1 md:mb-2">Monthly Spend</p>
+                                        <h3 id="currentSpend" class="text-xl md:text-4xl font-mono font-bold text-white tracking-tighter">₦5,400,000</h3>
+                                    </div>
+                                    <div class="mt-0 md:mt-4 flex items-center text-[9px] md:text-[10px] font-bold text-red-400/80 shrink-0">
+                                        <span class="w-2 h-2 rounded-full bg-red-500 mr-1.5 animate-pulse"></span>
+                                        CASH DRAIN
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Strategic Savings Card -->
+                            <div class="flex-1 p-5 md:p-10 rounded-2xl md:rounded-[2.5rem] bg-gradient-to-br from-emerald-500 to-teal-700 shadow-[0_20px_50px_rgba(16,185,129,0.2)] relative overflow-hidden group">
+                                <!-- Animated Background Shine -->
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+
+                                <div class="relative z-10 flex flex-col h-full">
+                                    <div>
+                                        <p class="text-emerald-100/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mb-1 md:mb-2">Monthly Strategic Savings</p>
+                                        <h3 id="savings" class="text-2xl sm:text-3xl md:text-6xl font-mono font-bold text-white tracking-tighter">₦4,590,000</h3>
+                                        <div class="mt-2 md:mt-4 inline-flex items-center px-2.5 py-0.5 md:px-3 md:py-1 bg-white/20 rounded-full text-[9px] md:text-[10px] font-black text-white border border-white/20 backdrop-blur-sm">
+                                            85% DISPLACEMENT RATIO
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 md:mt-auto pt-4 md:pt-10 border-t border-white/10">
+                                        <p class="text-emerald-100/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mb-1 md:mb-2">Annual Capital Recovery</p>
+                                        <h4 id="annualSavings" class="text-lg sm:text-xl md:text-3xl font-mono text-white font-bold tracking-tight">₦55,080,000</h4>
+                                        <p class="text-emerald-100/40 text-[9px] md:text-[10px] mt-2 md:mt-4 italic font-medium hidden md:block">Yielding significant IRR improvements over 25-year lifecycle.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Final Closing -->
-        <footer class="mt-20 py-12 md:py-20 bg-slate-900 rounded-3xl md:rounded-[3rem] text-center text-white relative overflow-hidden">
+                <!-- Bottom Strategy Footer -->
+                <div class="bg-black/20 border-t border-white/5 py-3 px-5 md:p-6 md:px-16 flex items-center justify-between gap-4">
+                    <div class="flex flex-wrap gap-3 md:gap-6">
+                        <div class="flex items-center text-slate-400 text-[9px] md:text-[11px] font-bold uppercase tracking-wider">
+                            <i class="fas fa-check-double mr-1.5 md:mr-2 text-emerald-500"></i> Fixed CAPEX
+                        </div>
+                        <div class="flex items-center text-slate-400 text-[9px] md:text-[11px] font-bold uppercase tracking-wider">
+                            <i class="fas fa-chart-pie mr-1.5 md:mr-2 text-yellow-500"></i> DSCR Opt.
+                        </div>
+                    </div>
+                    <div class="text-slate-600 text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em]">Planning Suite</div>
+                </div>
+                </div>
+            </section>
+
+            <!-- Regulatory Section -->
+            <section id="regulatory">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">07</div>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Regulatory Framework</h2>
+                </div>
+            
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] border border-slate-200 shadow-sm relative overflow-hidden group hover:border-yellow-500/30 transition-all">
+                        <div class="absolute top-0 right-0 p-8 text-slate-50 group-hover:text-yellow-500/5 transition-colors">
+                            <i class="fas fa-file-contract text-6xl md:text-8xl"></i>
+                        </div>
+                        <h4 class="text-lg font-black text-slate-900 uppercase tracking-tighter mb-8 flex items-center gap-3">
+                            <span class="w-1.5 h-6 bg-yellow-500 rounded-full"></span> NERC Compliance
+                        </h4>
+                        <div class="space-y-8 relative z-10">
+                            <div class="flex gap-6">
+                                <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-black shrink-0 shadow-lg">1</div>
+                                <div>
+                                    <p class="font-black text-slate-900 uppercase text-xs tracking-widest mb-2">Isolated Permit</p>
+                                    <p class="text-sm text-slate-500 leading-relaxed italic">Adherence to the NERC Mini-Grid Regulation 2016 for standalone systems below 1MW capacity threshold.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6">
+                                <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-black shrink-0 shadow-lg">2</div>
+                                <div>
+                                    <p class="font-black text-slate-900 uppercase text-xs tracking-widest mb-2">Buy-out Protection</p>
+                                    <p class="text-sm text-slate-500 leading-relaxed italic">Pre-negotiated asset protection formulas ensuring full capital recovery in grid arrival scenarios.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] border border-slate-200 shadow-sm relative overflow-hidden group hover:border-red-500/20 transition-all">
+                        <div class="absolute top-0 right-0 p-8 text-slate-50 group-hover:text-red-500/5 transition-colors">
+                            <i class="fas fa-shield-virus text-6xl md:text-8xl"></i>
+                        </div>
+                        <h4 class="text-lg font-black text-slate-900 uppercase tracking-tighter mb-8 flex items-center gap-3">
+                            <span class="w-1.5 h-6 bg-red-500 rounded-full"></span> Risk Mitigation
+                        </h4>
+                        <div class="space-y-4 relative z-10">
+                            <div class="flex items-center justify-between p-3.5 md:p-5 bg-orange-50 rounded-2xl border border-orange-100 group/item hover:bg-white transition-all">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center shadow-lg"><i class="fas fa-wind text-sm"></i></div>
+                                    <div>
+                                        <p class="text-[10px] font-black text-orange-900 uppercase tracking-widest">Harmattan Dust</p>
+                                        <p class="text-xs text-orange-700 font-bold italic">30% PV Array Margin + Auto Cleaning</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-check-circle text-orange-200"></i>
+                            </div>
+                            <div class="flex items-center justify-between p-3.5 md:p-5 bg-slate-50 rounded-2xl border border-slate-100 group/item hover:bg-white transition-all">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-lg"><i class="fas fa-money-bill-trend-up text-sm"></i></div>
+                                    <div>
+                                        <p class="text-[10px] font-black text-slate-900 uppercase tracking-widest">FX Volatility</p>
+                                        <p class="text-xs text-slate-500 font-bold italic">USD-Indexed Equipment Contracts</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-check-circle text-slate-200"></i>
+                            </div>
+                            <div class="flex items-center justify-between p-3.5 md:p-5 bg-slate-50 rounded-2xl border border-slate-100 group/item hover:bg-white transition-all">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-lg"><i class="fas fa-handshake-angle text-sm"></i></div>
+                                    <div>
+                                        <p class="text-[10px] font-black text-slate-900 uppercase tracking-widest">Theft/Vandalism</p>
+                                        <p class="text-xs text-slate-500 font-bold italic">Community Stakeholder Protocols</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-check-circle text-slate-200"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Section -->
+            <section id="community">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="section-tag w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg">08</div>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Stakeholder Engagement</h2>
+                </div>
+            
+                <div class="bg-white p-6 md:p-12 lg:p-16 rounded-2xl md:rounded-[3rem] border border-slate-200 shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
+                        <div class="group p-6 md:p-10 bg-slate-50 rounded-2xl md:rounded-[2.5rem] border border-slate-100 transition-all hover:bg-white hover:border-yellow-500/30 hover:shadow-xl hover:shadow-yellow-500/5">
+                            <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl md:rounded-[2rem] flex items-center justify-center mx-auto mb-6 md:mb-8 shadow-sm group-hover:scale-110 transition-transform">
+                                <i class="fas fa-bullhorn text-3xl text-yellow-500"></i>
+                            </div>
+                            <h5 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-4">Town Hall Models</h5>
+                            <p class="text-xs text-slate-500 leading-relaxed italic font-medium">Transparency protocols on tariffs and socio-economic local benefits.</p>
+                        </div>
+
+                        <div class="group p-6 md:p-10 bg-slate-50 rounded-2xl md:rounded-[2.5rem] border border-slate-100 transition-all hover:bg-white hover:border-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/5">
+                            <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl md:rounded-[2rem] flex items-center justify-center mx-auto mb-6 md:mb-8 shadow-sm group-hover:scale-110 transition-transform">
+                                <i class="fas fa-tools text-3xl text-emerald-500"></i>
+                            </div>
+                            <h5 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-4">Local Integration</h5>
+                            <p class="text-xs text-slate-500 leading-relaxed italic font-medium">Hiring local technical talent for day-to-day O&M and Security ops.</p>
+                        </div>
+
+                        <div class="group p-6 md:p-10 bg-slate-50 rounded-2xl md:rounded-[2.5rem] border border-slate-100 transition-all hover:bg-white hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5">
+                            <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl md:rounded-[2rem] flex items-center justify-center mx-auto mb-6 md:mb-8 shadow-sm group-hover:scale-110 transition-transform">
+                                <i class="fas fa-balance-scale text-3xl text-blue-500"></i>
+                            </div>
+                            <h5 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-4">Social License</h5>
+                            <p class="text-xs text-slate-500 leading-relaxed italic font-medium">Engaging traditional leadership for long-term project protection.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Closing -->
+            <footer class="mt-20 py-12 md:py-20 bg-slate-900 rounded-3xl md:rounded-[3rem] text-center text-white relative overflow-hidden">
             <div class="absolute inset-0 bg-yellow-500 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
             <h2 class="text-2xl md:text-4xl font-bold mb-4 px-4">Strategic Value Proposition</h2>
             <p class="text-slate-400 mb-12 max-w-xl mx-auto italic text-sm px-4">"We focus on utility-grade infrastructure structured for long-term project bankability, operational resilience, and institutional compliance."</p>
@@ -758,13 +1015,9 @@
                     <p class="text-sm text-slate-400">Integrated cloud monitoring and local response protocols to ensure 99.9% target uptime availability.</p>
                 </div>
             </div>
+            </footer>
 
-            <h3 class="text-xl font-bold mb-6 md:mb-8">Technical Data Capture Protocol</h3>
-            <button onclick="openModal()" class="w-full md:w-auto px-8 md:px-10 py-4 md:py-5 bg-yellow-500 text-slate-900 font-black rounded-2xl shadow-2xl hover:bg-yellow-400 hover:scale-105 transition-all flex items-center justify-center mx-4 md:mx-auto uppercase tracking-widest text-sm touch-target">
-                <i class="fas fa-calendar-check mr-3"></i> <span class="hidden sm:inline">Initiate Technical Load Audit</span><span class="sm:hidden">Start Load Logging</span>
-            </button>
-        </footer>
-
+        </div>
     </main>
 
     <!-- Scheduling Modal -->
@@ -774,15 +1027,19 @@
                 <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-clipboard-check text-slate-900 text-3xl"></i>
                 </div>
-                <h3 class="text-xl md:text-2xl font-bold text-slate-900">Audit Request Initiated</h3>
-                <p class="text-slate-800 text-sm font-medium mt-1">48-Hour Precision Load Logging</p>
+                <h3 class="text-xl md:text-2xl font-bold text-slate-900">Proposed: 48-Hour Technical Site Audit</h3>
+                <p class="text-slate-800 text-sm font-medium mt-1">Post-Approval Load Assessment</p>
             </div>
             <div class="p-6 md:p-8">
-                <h4 class="font-bold text-slate-800 mb-4">Immediate Next Steps:</h4>
+                <h4 class="font-bold text-slate-800 mb-4">Upon Contract Approval:</h4>
                 <ul class="space-y-4 text-sm text-slate-600 mb-8">
                     <li class="flex items-start">
                         <i class="fas fa-check text-emerald-500 mt-1 mr-3 flex-shrink-0"></i>
-                        <span>Technical team will deploy industrial loggers within 48 hours of approval.</span>
+                        <span>Technical team will mobilize and deploy industrial loggers within 3 working days of formal approval.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-emerald-500 mt-1 mr-3 flex-shrink-0"></i>
+                        <span>Continuous monitoring for 48-72 hours, capturing voltage, current, and harmonics at 5-minute intervals.</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-check text-emerald-500 mt-1 mr-3 flex-shrink-0"></i>
@@ -832,13 +1089,13 @@
 
         // Auto-hiding Mobile Header Logic
         let lastScrollY = window.pageYOffset;
-        const mobileHeader = document.querySelector('header.md\\:hidden');
-        
+        const mobileHeader = document.querySelector('header.lg\\:hidden');
+
         window.addEventListener('scroll', () => {
             const currentScrollY = window.pageYOffset;
-            
-            // Toggle header visibility on mobile
-            if (window.innerWidth < 768) {
+
+            // Toggle header visibility on mobile/tablet
+            if (window.innerWidth < 1024) {
                 if (currentScrollY > lastScrollY && currentScrollY > 80) {
                     // Scrolling down
                     mobileHeader.classList.add('header-hidden');
@@ -880,10 +1137,10 @@
                 const btn = document.getElementById('btn-' + f);
                 if (f === type) {
                     btn.classList.add('bg-yellow-500', 'text-slate-900');
-                    btn.classList.remove('hover:bg-slate-700');
+                    btn.classList.remove('hover:bg-white/5', 'text-slate-400');
                 } else {
                     btn.classList.remove('bg-yellow-500', 'text-slate-900');
-                    btn.classList.add('hover:bg-slate-700');
+                    btn.classList.add('hover:bg-white/5', 'text-slate-400');
                 }
             });
 
