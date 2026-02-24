@@ -17,10 +17,3 @@ This repository contains the strategic and technical preparation materials for t
 - `capex_composition.svg`: Breakdown of capital expenditure.
 - `capital_structure.svg`: Debt vs. Equity funding ratios.
 
-## 🛠 Project Team
-- **Stanley**: Lead Technical Consultant / Infrastructure Architect.
-- **Tracee**: Project Lead / Client Relationship Manager.
-- **Tracee's Boss**: Chairman / Project Owner.
-
-## 📅 Next Steps
-The immediate objective of the client meeting is to secure a commitment for the **48-Hour Technical Site Audit** (Load Logging).
