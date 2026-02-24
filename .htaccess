@@ -1,0 +1,123 @@
+# Apache Configuration for TraceeSolar Minigrid
+# Place this .htaccess file in your document root
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Redirect to index.min.html for SPA routing
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.min.html [L,QSA]
+</IfModule>
+
+# Enable Gzip Compression
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, SVG, XML
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE text/xml
+    
+    # Compression level (1-9, 9 = maximum compression)
+    DeflateCompressionLevel 9
+    
+    # Don't compress images (already compressed)
+    SetEnvIfNoCase Request_URI \.(gif|jpg|jpeg|png|webp|ico)$ no-gzip
+</IfModule>
+
+# Enable Brotli Compression (if available)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript image/svg+xml
+    BrotliCompressionLevel 11
+</IfModule>
+
+# Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # HTML - no cache
+    ExpiresByType text/html "access plus 0 seconds"
+    
+    # CSS and JavaScript - 1 week
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType application/x-javascript "access plus 7 days"
+    
+    # Images - 1 month
+    ExpiresByType image/svg+xml "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/gif "access plus 30 days"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType image/x-icon "access plus 30 days"
+    
+    # Fonts - 1 month
+    ExpiresByType font/woff2 "access plus 30 days"
+    ExpiresByType font/woff "access plus 30 days"
+    ExpiresByType font/ttf "access plus 30 days"
+    ExpiresByType application/font-woff "access plus 30 days"
+</IfModule>
+
+# Cache-Control Headers
+<IfModule mod_headers.c>
+    # Static assets - cache for 1 week
+    <FilesMatch "\.(css|js|svg|png|jpg|jpeg|gif|webp|ico|woff2|woff|ttf)$">
+        Header set Cache-Control "public, max-age=604800, immutable"
+    </FilesMatch>
+    
+    # HTML - no cache
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "public, max-age=0, must-revalidate"
+    </FilesMatch>
+    
+    # Security headers
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Remove server signature
+    Header unset Server
+    Header unset X-Powered-By
+</IfModule>
+
+# Security - Prevent access to sensitive files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "(^\.ht|^\.htaccess|\.git|\.env)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# MIME Types
+<IfModule mod_mime.c>
+    AddType application/javascript js
+    AddType text/css css
+    AddType image/svg+xml svg
+    AddType font/woff2 woff2
+    AddType font/woff woff
+    AddType application/manifest+json webmanifest
+</IfModule>
+
+# UTF-8 Encoding
+AddDefaultCharset UTF-8
+AddType text/html; charset=UTF-8 html
+AddType text/css; charset=UTF-8 css
+AddType application/javascript; charset=UTF-8 js
+AddType application/json; charset=UTF-8 json
+
+# Prevent directory listing
+Options -Indexes
+
+# Custom error pages (optional)
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
